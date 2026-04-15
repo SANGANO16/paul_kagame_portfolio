@@ -7,6 +7,160 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .hero {
+            background-image: url('assets/images/0dr7gwy3WIJO.jpg');
+        }
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            padding: 80px 0;
+        }
+        .intro-text h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .intro-text p {
+            margin-bottom: 20px;
+        }
+        .intro-image img {
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        .highlights {
+            background: var(--card-bg);
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .highlight-card {
+            padding: 40px;
+            background: var(--bg-color);
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        .highlight-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .stats {
+            padding: 80px 0;
+            background: var(--primary-color);
+            color: #fff;
+            text-align: center;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        .stat-item h2 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+        .quote {
+            padding: 100px 0;
+            text-align: center;
+            font-style: italic;
+        }
+        .quote blockquote {
+            font-size: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        .quote footer {
+            background: transparent;
+            color: var(--text-color);
+            margin-top: 20px;
+            font-weight: 600;
+            font-style: normal;
+        }
+        .latest-news {
+            padding: 80px 0;
+            background: var(--card-bg);
+        }
+        .news-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .news-preview-card {
+            background: var(--bg-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .news-preview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        .news-preview-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .news-preview-content {
+            padding: 20px;
+        }
+        .news-preview-content .date {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .news-preview-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .news-preview-content p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .visitor-counter {
+            position: fixed;
+            bottom: 90px;
+            right: 30px;
+            background: var(--card-bg);
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            z-index: 999;
+            font-size: 0.85rem;
+        }
+        .visitor-counter i {
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+        @media (max-width: 768px) {
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+            .quote blockquote {
+                font-size: 1.5rem;
+            }
+            .visitor-counter {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -21,6 +175,8 @@
                     <li><a href="achievements.html">Achievements</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="news.html">News</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="resources.html">Resources</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <div class="nav-controls">
@@ -31,53 +187,54 @@
         </div>
     </header>
 
-    <section class="hero" style="background-image: url('assets/images/0dr7gwy3WIJO.jpg');">
+    <section class="hero">
         <div class="hero-content">
             <h1 id="typing-text"></h1>
-            <p>A visionary leader shaping Rwanda’s transformation and global presence</p>
+            <p>A visionary leader shaping Rwanda's transformation and global presence</p>
             <a href="biography.html" class="btn">Explore Profile</a>
         </div>
     </section>
 
     <section class="intro reveal">
         <div class="container">
-            <div class="intro-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; padding: 80px 0;">
+            <div class="intro-grid">
                 <div class="intro-text">
-                    <h2 id="dynamic-greeting" style="color: var(--primary-color); margin-bottom: 20px;">Welcome</h2>
-                    <p style="margin-bottom: 20px;">Paul Kagame is the President of the Republic of Rwanda, a position he has held since 2000. Known for his transformative leadership, he has guided Rwanda through a period of remarkable recovery and growth following the 1994 Genocide against the Tutsi.</p>
-                    <p style="margin-bottom: 30px;">His administration is defined by a commitment to peace, reconciliation, and economic self-reliance. Under his guidance, Rwanda has become a global model for development, women's empowerment, and technological innovation.</p>
+                    <h2 id="dynamic-greeting">Welcome</h2>
+                    <p>Paul Kagame is the President of the Republic of Rwanda, a position he has held since 2000. Known for his transformative leadership, he has guided Rwanda through a period of remarkable recovery and growth following the 1994 Genocide against the Tutsi.</p>
+                    <p>His administration is defined by a commitment to peace, reconciliation, and economic self-reliance. Under his guidance, Rwanda has become a global model for development, women's empowerment, and technological innovation.</p>
                     <a href="biography.html" class="btn">Read Full Biography</a>
                 </div>
                 <div class="intro-image">
-                    <img src="assets/images/ZU34AkmT9CVb.jpeg" alt="Paul Kagame Portrait" style="border-radius: 10px; box-shadow: var(--shadow);">
+                    <img src="assets/images/Propi.jpg" alt="Paul Kagame Portrait">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="highlights reveal" style="background: var(--card-bg); padding: 80px 0;">
+    <section class="highlights reveal">
         <div class="container">
-            <div class="section-title" style="text-align: center; margin-bottom: 50px;">
+            <div class="section-title">
                 <h2>Key Highlights</h2>
+                <p>Transforming Rwanda through visionary leadership</p>
             </div>
-            <div class="highlight-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
-                <div class="card" style="padding: 40px; background: var(--bg-color); border-radius: 10px; text-align: center; box-shadow: var(--shadow);">
-                    <i class="fas fa-history" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+            <div class="highlight-grid">
+                <div class="highlight-card">
+                    <i class="fas fa-history"></i>
                     <h3>Years of Leadership</h3>
                     <p>Over two decades of stable governance and strategic transformation.</p>
                 </div>
-                <div class="card" style="padding: 40px; background: var(--bg-color); border-radius: 10px; text-align: center; box-shadow: var(--shadow);">
-                    <i class="fas fa-chart-line" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+                <div class="highlight-card">
+                    <i class="fas fa-chart-line"></i>
                     <h3>National Development</h3>
                     <p>Driving Rwanda towards a middle-income, knowledge-based economy.</p>
                 </div>
-                <div class="card" style="padding: 40px; background: var(--bg-color); border-radius: 10px; text-align: center; box-shadow: var(--shadow);">
-                    <i class="fas fa-globe" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+                <div class="highlight-card">
+                    <i class="fas fa-globe"></i>
                     <h3>Global Influence</h3>
                     <p>A respected voice in African and international diplomacy.</p>
                 </div>
-                <div class="card" style="padding: 40px; background: var(--bg-color); border-radius: 10px; text-align: center; box-shadow: var(--shadow);">
-                    <i class="fas fa-shield-alt" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+                <div class="highlight-card">
+                    <i class="fas fa-shield-alt"></i>
                     <h3>Stability & Governance</h3>
                     <p>Ensuring national unity and security for all Rwandans.</p>
                 </div>
@@ -85,30 +242,72 @@
         </div>
     </section>
 
-    <section class="stats reveal" style="padding: 80px 0; background: var(--primary-color); color: #fff; text-align: center;">
+    <section class="stats reveal">
         <div class="container">
-            <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;">
+            <div class="stats-grid">
                 <div class="stat-item">
-                    <h2 class="counter" data-target="24" style="font-size: 3.5rem;">0</h2>
+                    <h2 class="counter" data-target="24">0</h2>
                     <p>Years in Leadership</p>
                 </div>
                 <div class="stat-item">
-                    <h2 class="counter" data-target="100" style="font-size: 3.5rem;">0</h2>
+                    <h2 class="counter" data-target="100">0</h2>
                     <p>Major Reforms</p>
                 </div>
                 <div class="stat-item">
-                    <h2 class="counter" data-target="50" style="font-size: 3.5rem;">0</h2>
+                    <h2 class="counter" data-target="50">0</h2>
                     <p>International Engagements</p>
+                </div>
+                <div class="stat-item">
+                    <h2 class="counter" data-target="13">0</h2>
+                    <p>Million Citizens</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="quote reveal" style="padding: 100px 0; text-align: center; font-style: italic;">
+    <section class="latest-news reveal">
         <div class="container">
-            <blockquote style="font-size: 2rem; max-width: 800px; margin: 0 auto;">
+            <div class="section-title">
+                <h2>Latest News</h2>
+                <p>Stay updated with the latest developments</p>
+            </div>
+            <div class="news-preview-grid">
+                <div class="news-preview-card">
+                    <img src="assets/images/Kwibuka32.jpg" alt="News">
+                    <div class="news-preview-content">
+                        <div class="date"><i class="far fa-calendar"></i> April 7, 2026</div>
+                        <h3>32nd Commemoration of the Genocide against the Tutsi</h3>
+                        <p>President Kagame delivered a powerful address marking the 32nd anniversary...</p>
+                    </div>
+                </div>
+                <div class="news-preview-card">
+                    <img src="assets/images/Eco-Friendly Housing Projects.jpg" alt="News">
+                    <div class="news-preview-content">
+                        <div class="date"><i class="far fa-calendar"></i> March 15, 2026</div>
+                        <h3>Eco-Friendly Housing Project Inaugurated</h3>
+                        <p>New sustainable housing development launched to address climate challenges...</p>
+                    </div>
+                </div>
+                <div class="news-preview-card">
+                    <img src="assets/images/Keynote Address at the African Union Summit.jpg" alt="News">
+                    <div class="news-preview-content">
+                        <div class="date"><i class="far fa-calendar"></i> February 20, 2026</div>
+                        <h3>Keynote at African Union Summit</h3>
+                        <p>President Kagame addressed African leaders on continental integration...</p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="news.html" class="btn">View All News</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote reveal">
+        <div class="container">
+            <blockquote>
                 "We must choose to be part of the world, not apart from it."
-                <footer style="background: transparent; color: var(--text-color); margin-top: 20px; font-weight: 600;">— Paul Kagame</footer>
+                <footer>— Paul Kagame</footer>
             </blockquote>
         </div>
     </section>
@@ -122,6 +321,8 @@
                 <a href="achievements.html">Achievements</a>
                 <a href="gallery.html">Gallery</a>
                 <a href="news.html">News</a>
+                <a href="events.html">Events</a>
+                <a href="resources.html">Resources</a>
                 <a href="contact.html">Contact</a>
             </div>
             <p style="margin-bottom: 10px;">Educational Purpose - Professional Portfolio Project</p>
@@ -132,6 +333,10 @@
     </footer>
 
     <div id="scroll-top"><i class="fas fa-arrow-up"></i></div>
+
+    <div class="visitor-counter" id="visitorCounter">
+        <i class="fas fa-users"></i> Visitors: <span id="visitorCount">0</span>
+    </div>
 
     <script src="assets/js/main.js"></script>
     <script>
@@ -195,6 +400,15 @@
             }
         });
         observer.observe(document.querySelector('.stats'));
+
+        // Update visitor counter display
+        function updateVisitorDisplay() {
+            const stats = getVisitorStats();
+            document.getElementById('visitorCount').textContent = stats.totalVisits;
+        }
+        
+        // Call after a short delay to ensure main.js has loaded
+        setTimeout(updateVisitorDisplay, 500);
     </script>
 </body>
 </html>

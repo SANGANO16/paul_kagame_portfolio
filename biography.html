@@ -52,11 +52,105 @@
             border-radius: 10px;
             box-shadow: var(--shadow);
         }
-        @media (max-width: 600px) {
+        .content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .bio-content {
+            padding: 80px 0;
+        }
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+        }
+        .bio-sidebar img {
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+        .quick-facts {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        .quick-facts h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        .quick-facts ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        .quick-facts ul li:last-child {
+            border-bottom: none;
+        }
+        .bio-text h2 {
+            color: var(--primary-color);
+            margin: 30px 0 15px;
+        }
+        .bio-text h2:first-child {
+            margin-top: 0;
+        }
+        .bio-text p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        .timeline-section {
+            background: var(--card-bg);
+            padding: 80px 0;
+        }
+        .values {
+            padding: 80px 0;
+            text-align: center;
+        }
+        .values p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            font-style: italic;
+            line-height: 1.8;
+        }
+        .awards-section {
+            padding: 80px 0;
+            background: var(--card-bg);
+        }
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .award-card {
+            background: var(--bg-color);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .award-card:hover {
+            transform: translateY(-5px);
+        }
+        .award-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        .award-card h4 {
+            margin-bottom: 10px;
+        }
+        .award-card p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
             .timeline::after { left: 31px; }
             .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
             .timeline-item::after { left: 21px; }
             .right { left: 0; }
+            .bio-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -73,6 +167,8 @@
                     <li><a href="achievements.html">Achievements</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="news.html">News</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="resources.html">Resources</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <div class="nav-controls">
@@ -86,45 +182,57 @@
     <section class="page-header" style="padding: 100px 0 50px; background: var(--card-bg); text-align: center;">
         <div class="container">
             <h1>Biography of Paul Kagame</h1>
-            <p style="font-size: 1.2rem; color: var(--primary-color);">Early Life, Education, and Background</p>
+            <p style="font-size: 1.2rem; color: var(--primary-color);">Early Life, Education, and Journey to Leadership</p>
         </div>
     </section>
 
-    <section class="bio-content reveal" style="padding: 80px 0;">
+    <section class="bio-content reveal">
         <div class="container">
-            <div class="bio-grid" style="display: grid; grid-template-columns: 1fr 2fr; gap: 50px;">
+            <div class="bio-grid">
                 <div class="bio-sidebar">
-                    <img src="assets/images/ZU34AkmT9CVb.jpeg" alt="Paul Kagame" style="border-radius: 10px; margin-bottom: 20px;">
-                    <div class="quick-facts" style="background: var(--card-bg); padding: 20px; border-radius: 10px;">
-                        <h3>Quick Facts</h3>
-                        <ul style="margin-top: 15px;">
+                    <img src="assets/images/ZU34AkmT9CVb.jpeg" alt="Paul Kagame">
+                    <div class="quick-facts">
+                        <h3><i class="fas fa-info-circle"></i> Quick Facts</h3>
+                        <ul>
                             <li><strong>Full Name:</strong> Paul Kagame</li>
-                            <li><strong>Born:</strong> Oct 23, 1957</li>
+                            <li><strong>Born:</strong> October 23, 1957</li>
                             <li><strong>Birthplace:</strong> Tambwe, Rwanda</li>
-                            <li><strong>Spouse:</strong> Jeannette Kagame</li>
+                            <li><strong>Spouse:</strong> Jeannette Kagame (m. 1989)</li>
+                            <li><strong>Children:</strong> 4</li>
+                            <li><strong>President Since:</strong> April 22, 2000</li>
+                            <li><strong>Political Party:</strong> RPF-Inkotanyi</li>
                         </ul>
                     </div>
                 </div>
                 <div class="bio-text">
-                    <h2>Introduction</h2>
-                    <p style="margin-bottom: 20px;">Paul Kagame is the fourth and current President of Rwanda, serving since 2000. He is a former military officer and a key figure in the liberation of Rwanda and the end of the 1994 Genocide against the Tutsi.</p>
+                    <h2><i class="fas fa-user"></i> Introduction</h2>
+                    <p>Paul Kagame is the fourth and current President of Rwanda, serving since 2000. He is a former military officer and a key figure in the liberation of Rwanda and the end of the 1994 Genocide against the Tutsi. Under his leadership, Rwanda has transformed from a devastated nation into one of Africa's fastest-growing economies and a model for development.</p>
                     
-                    <h2>Early Life</h2>
-                    <p style="margin-bottom: 20px;">Born in 1957 in the southern province of Rwanda, Kagame’s family fled to Uganda when he was just two years old to escape ethnic violence. He spent his childhood in refugee camps, an experience that shaped his resilience and commitment to justice.</p>
+                    <h2><i class="fas fa-baby"></i> Early Life</h2>
+                    <p>Born in 1957 in the southern province of Rwanda, Kagame's family fled to Uganda when he was just two years old to escape ethnic violence. He spent his childhood in refugee camps in Uganda, an experience that shaped his resilience and commitment to justice. Growing up as a refugee instilled in him a deep understanding of the importance of home, dignity, and the need for a society where all people are treated equally.</p>
+                    <p>Despite the challenges of refugee life, young Paul excelled in his studies and developed a keen interest in politics and social justice. He was deeply influenced by the stories of his homeland told by his parents and elders, which fueled his determination to one day return to Rwanda and contribute to its betterment.</p>
                     
-                    <h2>Education</h2>
-                    <p style="margin-bottom: 20px;">Kagame attended primary school in the refugee camp and later moved to Ntare School in Mbarara, Uganda. He furthered his education in Kampala before receiving advanced military training at the US Army Command and General Staff College in Kansas, USA.</p>
+                    <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                    <p>Kagame attended primary school in the refugee camp and later moved to Ntare School in Mbarara, Uganda, one of the most prestigious schools in the region. He furthered his education in Kampala before receiving advanced military training at the US Army Command and General Staff College in Fort Leavenworth, Kansas, USA. His military education would prove invaluable in his future role as a liberation leader.</p>
+                    <p>Throughout his education, Kagame demonstrated exceptional leadership qualities and a deep commitment to serving his people. He was known for his discipline, strategic thinking, and ability to inspire others—traits that would define his future leadership.</p>
                     
-                    <h2>Career Beginnings</h2>
-                    <p style="margin-bottom: 20px;">Kagame’s military career began in the late 1970s when he joined Yoweri Museveni’s rebel army in Uganda. He rose through the ranks to become a senior officer. In 1990, he took command of the Rwandan Patriotic Front (RPF) following the death of its initial leader, Fred Rwigyema.</p>
+                    <h2><i class="fas fa-fist-raised"></i> Career Beginnings</h2>
+                    <p>Kagame's military career began in the late 1970s when he joined Yoweri Museveni's rebel army in Uganda. He rose through the ranks to become a senior officer in the National Resistance Army (NRA), playing a crucial role in the liberation struggle that brought Museveni to power in 1986.</p>
+                    <p>In 1990, he took command of the Rwandan Patriotic Front (RPF) following the death of its initial leader, Fred Rwigyema. Under his leadership, the RPF fought to end the dictatorship in Rwanda and stop the genocide that claimed over one million lives in 1994. The RPF's victory in July 1994 ended the genocide and began Rwanda's journey of reconstruction.</p>
+                    
+                    <h2><i class="fas fa-landmark"></i> Rise to Presidency</h2>
+                    <p>After serving as Vice President and Minister of Defense from 1994 to 2000, Kagame was elected President by the Transitional National Assembly on April 22, 2000. He has since been re-elected multiple times with overwhelming support from the Rwandan people, most recently in 2024.</p>
+                    
+                    <h2><i class="fas fa-heart"></i> Personal Life</h2>
+                    <p>Paul Kagame married Jeannette Nyiramongi in 1989, and together they have four children. Jeannette Kagame is actively involved in charitable work, particularly through her organization Imbuto Foundation, which focuses on health, education, and youth empowerment. The Kagame family is known for their modest lifestyle and commitment to serving the Rwandan people.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="timeline-section reveal" style="background: var(--card-bg); padding: 80px 0;">
+    <section class="timeline-section reveal">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px;">Life & Career Timeline</h2>
+            <h2 style="text-align: center; margin-bottom: 50px;"><i class="fas fa-history"></i> Life & Career Timeline</h2>
             <div class="timeline">
                 <div class="timeline-item left">
                     <div class="content">
@@ -135,19 +243,31 @@
                 <div class="timeline-item right">
                     <div class="content">
                         <h3>1959</h3>
-                        <p>Family flees to Uganda as refugees.</p>
+                        <p>Family flees to Uganda as refugees due to ethnic violence.</p>
                     </div>
                 </div>
                 <div class="timeline-item left">
+                    <div class="content">
+                        <h3>1986</h3>
+                        <p>Joins Yoweri Museveni's National Resistance Army in Uganda.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
                     <div class="content">
                         <h3>1990</h3>
                         <p>Takes command of the RPF liberation struggle.</p>
                     </div>
                 </div>
-                <div class="timeline-item right">
+                <div class="timeline-item left">
                     <div class="content">
                         <h3>1994</h3>
-                        <p>RPF ends the Genocide against the Tutsi.</p>
+                        <p>RPF ends the Genocide against the Tutsi on July 4.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content">
+                        <h3>1994-2000</h3>
+                        <p>Serves as Vice President and Minister of Defense.</p>
                     </div>
                 </div>
                 <div class="timeline-item left">
@@ -158,6 +278,24 @@
                 </div>
                 <div class="timeline-item right">
                     <div class="content">
+                        <h3>2003</h3>
+                        <p>First presidential election victory with 95% of the vote.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content">
+                        <h3>2010</h3>
+                        <p>Re-elected with 93% of the vote.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content">
+                        <h3>2017</h3>
+                        <p>Re-elected with 98.8% of the vote.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content">
                         <h3>2024</h3>
                         <p>Re-elected for another term with overwhelming support.</p>
                     </div>
@@ -166,10 +304,39 @@
         </div>
     </section>
 
-    <section class="values reveal" style="padding: 80px 0; text-align: center;">
+    <section class="awards-section reveal">
         <div class="container">
-            <h2 style="margin-bottom: 30px;">Personal Values</h2>
-            <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem;">"Leadership is not just about a title; it is about accountability, discipline, and a relentless focus on the well-being of the people. Our vision for Rwanda is built on the strength and unity of its citizens."</p>
+            <h2 style="text-align: center; margin-bottom: 20px;"><i class="fas fa-award"></i> Honors & Recognition</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; color: #888;">President Kagame has received numerous awards and honors in recognition of his leadership and contributions to Rwanda and Africa.</p>
+            <div class="awards-grid">
+                <div class="award-card">
+                    <i class="fas fa-medal"></i>
+                    <h4>Order of the Golden Heart</h4>
+                    <p>Kenya's highest civilian honor (2023)</p>
+                </div>
+                <div class="award-card">
+                    <i class="fas fa-star"></i>
+                    <h4>Global Citizen Award</h4>
+                    <p>Atlantic Council (2022)</p>
+                </div>
+                <div class="award-card">
+                    <i class="fas fa-trophy"></i>
+                    <h4>African Leadership Award</h4>
+                    <p>African Union (2019)</p>
+                </div>
+                <div class="award-card">
+                    <i class="fas fa-certificate"></i>
+                    <h4>Honorary Doctorates</h4>
+                    <p>From multiple universities worldwide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values reveal">
+        <div class="container">
+            <h2 style="margin-bottom: 30px;"><i class="fas fa-quote-left"></i> Personal Philosophy</h2>
+            <p>"Leadership is not just about a title; it is about accountability, discipline, and a relentless focus on the well-being of the people. Our vision for Rwanda is built on the strength and unity of its citizens. We cannot change the past, but we can shape the future through hard work, unity, and determination."</p>
         </div>
     </section>
 
@@ -182,6 +349,8 @@
                 <a href="achievements.html">Achievements</a>
                 <a href="gallery.html">Gallery</a>
                 <a href="news.html">News</a>
+                <a href="events.html">Events</a>
+                <a href="resources.html">Resources</a>
                 <a href="contact.html">Contact</a>
             </div>
             <p style="margin-bottom: 10px;">Educational Purpose - Professional Portfolio Project</p>

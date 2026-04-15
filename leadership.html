@@ -7,6 +7,170 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .leadership-style {
+            padding: 80px 0;
+        }
+        .style-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .style-text h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .style-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .style-image img {
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        .key-policies {
+            background: var(--card-bg);
+            padding: 80px 0;
+        }
+        .policy-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 25px;
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--primary-color);
+            color: #fff;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .policy-card {
+            padding: 40px;
+            background: var(--bg-color);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        .policy-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .policy-card ul {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+        .policy-card ul li {
+            padding: 8px 0;
+            list-style: disc;
+        }
+        .icons {
+            padding: 80px 0;
+            text-align: center;
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .icon-item {
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        .icon-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+        .icon-item i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .vision-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-color), #0082b3);
+            color: #fff;
+            text-align: center;
+        }
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .vision-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        .vision-card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .quotes-section {
+            padding: 80px 0;
+            background: var(--card-bg);
+        }
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .quote-card {
+            background: var(--bg-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .quote-card::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-color);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+        .quote-card p {
+            font-style: italic;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        .quote-card footer {
+            color: var(--primary-color);
+            font-weight: 600;
+            background: transparent;
+        }
+        @media (max-width: 768px) {
+            .style-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
@@ -21,6 +185,8 @@
                     <li><a href="achievements.html">Achievements</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="news.html">News</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="resources.html">Resources</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <div class="nav-controls">
@@ -34,79 +200,178 @@
     <section class="page-header" style="padding: 100px 0 50px; background: var(--card-bg); text-align: center;">
         <div class="container">
             <h1>Leadership & Vision</h1>
-            <p style="font-size: 1.2rem; color: var(--primary-color);">Driving Rwanda’s Transformation</p>
+            <p style="font-size: 1.2rem; color: var(--primary-color);">Driving Rwanda's Transformation</p>
         </div>
     </section>
 
-    <section class="leadership-style reveal" style="padding: 80px 0;">
+    <section class="leadership-style reveal">
         <div class="container">
-            <div class="style-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
+            <div class="style-grid">
                 <div class="style-text">
-                    <h2>Leadership Style</h2>
-                    <p style="margin-bottom: 20px;">Paul Kagame’s leadership is characterized by a strong emphasis on discipline, accountability, and results-oriented governance. He believes in the power of strategic planning and the importance of national self-reliance.</p>
-                    <p style="margin-bottom: 20px;">His approach is rooted in the belief that Rwanda must find its own solutions to its unique challenges, while remaining open to global partnerships and innovation.</p>
+                    <h2><i class="fas fa-user-tie"></i> Leadership Style</h2>
+                    <p>Paul Kagame's leadership is characterized by a strong emphasis on discipline, accountability, and results-oriented governance. He believes in the power of strategic planning and the importance of national self-reliance.</p>
+                    <p>His approach is rooted in the belief that Rwanda must find its own solutions to its unique challenges, while remaining open to global partnerships and innovation. This philosophy has guided Rwanda's remarkable transformation from a post-genocide society to a thriving, modern nation.</p>
+                    <p>President Kagame is known for his hands-on approach, often visiting communities, infrastructure projects, and businesses to understand the realities on the ground. He expects excellence from his government officials and has zero tolerance for corruption.</p>
+                    <a href="resources.html" class="btn">Read Policy Documents</a>
                 </div>
                 <div class="style-image">
-                    <img src="assets/images/CvRLSjQWCl7j.jpg" alt="Paul Kagame Speaking" style="border-radius: 10px; box-shadow: var(--shadow);">
+                    <img src="assets/images/CvRLSjQWCl7j.jpg" alt="Paul Kagame Speaking">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="key-policies reveal" style="background: var(--card-bg); padding: 80px 0;">
+    <section class="vision-section reveal">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px;">Key Policies & Pillars</h2>
-            <div class="policy-tabs" style="display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; flex-wrap: wrap;">
-                <button class="tab-btn active btn" onclick="openTab(event, 'economic')">Economic Development</button>
-                <button class="tab-btn btn" onclick="openTab(event, 'tech')">Technology & Innovation</button>
-                <button class="tab-btn btn" onclick="openTab(event, 'health')">Health & Education</button>
-                <button class="tab-btn btn" onclick="openTab(event, 'infrastructure')">Infrastructure</button>
-            </div>
-
-            <div id="economic" class="tab-content" style="display: block;">
-                <div class="card" style="padding: 40px; background: var(--bg-color); border-radius: 10px; box-shadow: var(--shadow);">
-                    <h3>Economic Development</h3>
-                    <p>Focus on poverty reduction, private sector growth, and creating a business-friendly environment. Rwanda has consistently been one of the fastest-growing economies in Africa under Kagame’s leadership.</p>
+            <h2><i class="fas fa-eye"></i> Vision 2050</h2>
+            <p style="max-width: 700px; margin: 0 auto; font-size: 1.1rem;">Rwanda's long-term development blueprint aims to transform the country into a high-income nation by 2050, with a focus on knowledge-based economy, innovation, and sustainable development.</p>
+            <div class="vision-grid">
+                <div class="vision-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Quality Education</h3>
+                    <p>Building a knowledge-based society through investment in education and skills development.</p>
+                </div>
+                <div class="vision-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Universal Healthcare</h3>
+                    <p>Ensuring every Rwandan has access to quality healthcare services.</p>
+                </div>
+                <div class="vision-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Digital Economy</h3>
+                    <p>Leveraging technology to drive economic growth and innovation.</p>
+                </div>
+                <div class="vision-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Sustainability</h3>
+                    <p>Building a green economy that protects our environment for future generations.</p>
                 </div>
             </div>
-            <div id="tech" class="tab-content" style="display: none;">
-                <div class="card" style="padding: 40px; background: var(--bg-color); border-radius: 10px; box-shadow: var(--shadow);">
-                    <h3>Technology & Innovation</h3>
+        </div>
+    </section>
+
+    <section class="key-policies reveal">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px;"><i class="fas fa-tasks"></i> Key Policies & Pillars</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; color: #888;">The foundation of Rwanda's transformation is built on these strategic pillars</p>
+            
+            <div class="policy-tabs">
+                <button class="tab-btn active" onclick="openTab(event, 'economic')">Economic Development</button>
+                <button class="tab-btn" onclick="openTab(event, 'tech')">Technology & Innovation</button>
+                <button class="tab-btn" onclick="openTab(event, 'health')">Health & Education</button>
+                <button class="tab-btn" onclick="openTab(event, 'infrastructure')">Infrastructure</button>
+            </div>
+
+            <div id="economic" class="tab-content active">
+                <div class="policy-card">
+                    <h3><i class="fas fa-chart-line"></i> Economic Development</h3>
+                    <p>Focus on poverty reduction, private sector growth, and creating a business-friendly environment. Rwanda has consistently been one of the fastest-growing economies in Africa under Kagame's leadership.</p>
+                    <ul>
+                        <li>Annual GDP growth averaging 7-8% over the past decade</li>
+                        <li>Strategic investments in key sectors: tourism, agriculture, and manufacturing</li>
+                        <li>Business-friendly policies attracting foreign direct investment</li>
+                        <li>Special Economic Zones promoting industrial development</li>
+                        <li>Financial inclusion initiatives reaching millions of Rwandans</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="tech" class="tab-content">
+                <div class="policy-card">
+                    <h3><i class="fas fa-microchip"></i> Technology & Innovation</h3>
                     <p>Positioning Rwanda as a continental tech hub. Initiatives like the Smart Rwanda Master Plan and investments in fiber-optic infrastructure have driven digital transformation across all sectors.</p>
+                    <ul>
+                        <li>Nationwide 4G LTE coverage reaching 95% of the population</li>
+                        <li>Kigali Innovation City - Africa's largest innovation hub</li>
+                        <li>Digital government services reducing bureaucracy</li>
+                        <li>Partnerships with global tech giants like Microsoft, Amazon, and Google</li>
+                        <li>Coding academies and tech training programs for youth</li>
+                    </ul>
                 </div>
             </div>
-            <div id="health" class="tab-content" style="display: none;">
-                <div class="card" style="padding: 40px; background: var(--bg-color); border-radius: 10px; box-shadow: var(--shadow);">
-                    <h3>Health & Education</h3>
+            <div id="health" class="tab-content">
+                <div class="policy-card">
+                    <h3><i class="fas fa-heartbeat"></i> Health & Education</h3>
                     <p>Universal health insurance and significant improvements in maternal and child health. Education reforms focus on quality and relevance to the modern labor market.</p>
+                    <ul>
+                        <li>Mutuelle de Santé covering over 90% of the population</li>
+                        <li>Life expectancy increased from 49 to 69 years</li>
+                        <li>Free primary and secondary education for all</li>
+                        <li>Technical and vocational training expansion</li>
+                        <li>Partnerships with international universities</li>
+                    </ul>
                 </div>
             </div>
-            <div id="infrastructure" class="tab-content" style="display: none;">
-                <div class="card" style="padding: 40px; background: var(--bg-color); border-radius: 10px; box-shadow: var(--shadow);">
-                    <h3>Infrastructure</h3>
-                    <p>Major investments in roads, energy, and water systems. Strategic projects like the Bugesera International Airport and the Kigali Convention Centre showcase Rwanda’s modernization.</p>
+            <div id="infrastructure" class="tab-content">
+                <div class="policy-card">
+                    <h3><i class="fas fa-road"></i> Infrastructure</h3>
+                    <p>Major investments in roads, energy, and water systems. Strategic projects like the Bugesera International Airport and the Kigali Convention Centre showcase Rwanda's modernization.</p>
+                    <ul>
+                        <li>Over 1,000 km of paved roads constructed</li>
+                        <li>100% village electrification target by 2024</li>
+                        <li>Clean water access for over 80% of the population</li>
+                        <li>Modern public transport system in Kigali</li>
+                        <li>Smart city initiatives improving urban living</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="icons reveal" style="padding: 80px 0; text-align: center;">
+    <section class="icons reveal">
         <div class="container">
-            <div class="icon-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;">
+            <h2 style="margin-bottom: 20px;"><i class="fas fa-star"></i> Leadership Qualities</h2>
+            <p style="max-width: 600px; margin: 0 auto 40px; color: #888;">The defining characteristics that have shaped Rwanda's transformation</p>
+            <div class="icon-grid">
                 <div class="icon-item">
-                    <i class="fas fa-lightbulb" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+                    <i class="fas fa-lightbulb"></i>
                     <h3>Visionary</h3>
-                    <p>Always looking ahead to the future of Rwanda.</p>
+                    <p>Always looking ahead to the future of Rwanda with clear strategic goals.</p>
                 </div>
                 <div class="icon-item">
-                    <i class="fas fa-chess" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+                    <i class="fas fa-chess"></i>
                     <h3>Strategic</h3>
-                    <p>Focused on long-term goals and careful planning.</p>
+                    <p>Focused on long-term goals and careful planning for sustainable development.</p>
                 </div>
                 <div class="icon-item">
-                    <i class="fas fa-mountain" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+                    <i class="fas fa-mountain"></i>
                     <h3>Resilient</h3>
-                    <p>Overcoming challenges with strength and determination.</p>
+                    <p>Overcoming challenges with strength and determination, never giving up.</p>
+                </div>
+                <div class="icon-item">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Inclusive</h3>
+                    <p>Believing in the power of unity and ensuring all voices are heard.</p>
+                </div>
+                <div class="icon-item">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Accountable</h3>
+                    <p>Demanding excellence and transparency from leaders and institutions.</p>
+                </div>
+                <div class="icon-item">
+                    <i class="fas fa-globe-africa"></i>
+                    <h3>Pan-African</h3>
+                    <p>Championing African unity, integration, and self-determination.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quotes-section reveal">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px;"><i class="fas fa-quote-left"></i> Words of Wisdom</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; color: #888;">Inspiring quotes from President Kagame on leadership and development</p>
+            <div class="quotes-grid">
+                <div class="quote-card">
+                    <p>We cannot turn the clock back nor can we undo the harm caused, but we have the power to determine the future and to ensure that what happened never happens again.</p>
+                    <footer>— Paul Kagame</footer>
+                </div>
+                <div class="quote-card">
+                    <p>Leadership is not about being in charge. It is about taking care of those in your charge.</p>
+                    <footer>— Paul Kagame</footer>
+                </div>
+                <div class="quote-card">
+                    <p>Our future is not written for us, but by us. We have the power to shape our destiny.</p>
+                    <footer>— Paul Kagame</footer>
                 </div>
             </div>
         </div>
@@ -121,6 +386,8 @@
                 <a href="achievements.html">Achievements</a>
                 <a href="gallery.html">Gallery</a>
                 <a href="news.html">News</a>
+                <a href="events.html">Events</a>
+                <a href="resources.html">Resources</a>
                 <a href="contact.html">Contact</a>
             </div>
             <p style="margin-bottom: 10px;">Educational Purpose - Professional Portfolio Project</p>
@@ -138,14 +405,14 @@
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
             }
             tablinks = document.getElementsByClassName("tab-btn");
             for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
+                tablinks[i].classList.remove("active");
             }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
         }
     </script>
 </body>

@@ -7,6 +7,154 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .achievements-grid {
+            padding: 80px 0;
+        }
+        .achievement-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .achievement-card {
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--primary-color);
+            transition: var(--transition);
+        }
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        .achievement-card:nth-child(2) { border-top-color: var(--secondary-color); }
+        .achievement-card:nth-child(3) { border-top-color: var(--accent-color); }
+        .achievement-card:nth-child(4) { border-top-color: var(--primary-color); }
+        .achievement-card:nth-child(5) { border-top-color: var(--secondary-color); }
+        .achievement-card:nth-child(6) { border-top-color: var(--accent-color); }
+        
+        .achievement-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .achievement-card:nth-child(2) i { color: var(--secondary-color); }
+        .achievement-card:nth-child(3) i { color: var(--accent-color); }
+        .achievement-card h3 {
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        .achievement-card p {
+            line-height: 1.7;
+            color: #666;
+        }
+        .comparison {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 80px 0;
+        }
+        .comparison h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .comp-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        .comp-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        .comp-item h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        .comp-item ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+        .comp-item ul li {
+            padding: 10px 0;
+            line-height: 1.6;
+        }
+        .stats-section {
+            padding: 80px 0;
+            background: var(--card-bg);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .stat-card {
+            background: var(--bg-color);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+        .stat-card .number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .stat-card .label {
+            color: #888;
+            font-size: 0.95rem;
+        }
+        .testimonials {
+            padding: 80px 0;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .testimonial-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+        }
+        .testimonial-author h4 {
+            font-size: 1rem;
+        }
+        .testimonial-author span {
+            font-size: 0.85rem;
+            color: #888;
+        }
+        @media (max-width: 768px) {
+            .comp-grid { grid-template-columns: 1fr; }
+            .achievement-cards { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
@@ -21,6 +169,8 @@
                     <li><a href="achievements.html" class="active">Achievements</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="news.html">News</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="resources.html">Resources</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <div class="nav-controls">
@@ -38,64 +188,140 @@
         </div>
     </section>
 
-    <section class="achievements-grid reveal" style="padding: 80px 0;">
+    <section class="achievements-grid reveal">
         <div class="container">
-            <div class="achievement-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
-                <div class="card" style="padding: 40px; background: var(--card-bg); border-radius: 10px; box-shadow: var(--shadow); border-top: 5px solid var(--primary-color);">
-                    <i class="fas fa-dove" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+            <div class="achievement-cards">
+                <div class="achievement-card">
+                    <i class="fas fa-dove"></i>
                     <h3>Post-Genocide Stability</h3>
-                    <p>Successfully guided Rwanda from the devastation of the 1994 Genocide against the Tutsi towards a path of national reconciliation, unity, and peace. This has laid the foundation for all other achievements.</p>
+                    <p>Successfully guided Rwanda from the devastation of the 1994 Genocide against the Tutsi towards a path of national reconciliation, unity, and peace. This has laid the foundation for all other achievements. The Gacaca courts processed over 1.2 million cases, promoting justice and healing.</p>
                 </div>
-                <div class="card" style="padding: 40px; background: var(--card-bg); border-radius: 10px; box-shadow: var(--shadow); border-top: 5px solid var(--secondary-color);">
-                    <i class="fas fa-heartbeat" style="font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 20px;"></i>
+                <div class="achievement-card">
+                    <i class="fas fa-heartbeat"></i>
                     <h3>Healthcare Revolution</h3>
-                    <p>Implemented the Mutuelle de Santé, a community-based health insurance scheme that covers over 90% of the population. Significant reductions in child and maternal mortality rates have been achieved.</p>
+                    <p>Implemented the Mutuelle de Santé, a community-based health insurance scheme that covers over 90% of the population. Significant reductions in child and maternal mortality rates have been achieved. Life expectancy has increased from 49 to 69 years.</p>
                 </div>
-                <div class="card" style="padding: 40px; background: var(--card-bg); border-radius: 10px; box-shadow: var(--shadow); border-top: 5px solid var(--accent-color);">
-                    <i class="fas fa-microchip" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 20px;"></i>
+                <div class="achievement-card">
+                    <i class="fas fa-microchip"></i>
                     <h3>ICT & Innovation</h3>
-                    <p>Transformed Rwanda into a leading ICT hub in Africa. The nationwide fiber-optic network and the Smart Rwanda Master Plan have accelerated digital inclusion and innovation across the country.</p>
+                    <p>Transformed Rwanda into a leading ICT hub in Africa. The nationwide fiber-optic network and the Smart Rwanda Master Plan have accelerated digital inclusion and innovation across the country. Kigali is now known as the "Singapore of Africa."</p>
                 </div>
-                <div class="card" style="padding: 40px; background: var(--card-bg); border-radius: 10px; box-shadow: var(--shadow); border-top: 5px solid var(--primary-color);">
-                    <i class="fas fa-venus" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+                <div class="achievement-card">
+                    <i class="fas fa-venus"></i>
                     <h3>Women Empowerment</h3>
-                    <p>Rwanda holds the world record for the highest percentage of women in parliament, currently exceeding 60%. This commitment to gender equality has been a central pillar of national development.</p>
+                    <p>Rwanda holds the world record for the highest percentage of women in parliament, currently exceeding 60%. This commitment to gender equality has been a central pillar of national development, with women leading in business, politics, and education.</p>
                 </div>
-                <div class="card" style="padding: 40px; background: var(--card-bg); border-radius: 10px; box-shadow: var(--shadow); border-top: 5px solid var(--secondary-color);">
-                    <i class="fas fa-leaf" style="font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 20px;"></i>
+                <div class="achievement-card">
+                    <i class="fas fa-leaf"></i>
                     <h3>Environmental Protection</h3>
-                    <p>Championed environmental sustainability, including the nationwide ban on plastic bags and the annual Umuganda (community work) that includes massive tree-planting efforts.</p>
+                    <p>Championed environmental sustainability, including the nationwide ban on plastic bags and the annual Umuganda (community work) that includes massive tree-planting efforts. Rwanda is committed to becoming carbon neutral by 2050.</p>
                 </div>
-                <div class="card" style="padding: 40px; background: var(--card-bg); border-radius: 10px; box-shadow: var(--shadow); border-top: 5px solid var(--accent-color);">
-                    <i class="fas fa-city" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 20px;"></i>
+                <div class="achievement-card">
+                    <i class="fas fa-city"></i>
                     <h3>Urban Development</h3>
-                    <p>Transformed Kigali into one of the cleanest and safest cities in Africa. Major infrastructure projects like the Kigali Convention Centre have made the city a hub for international conferences.</p>
+                    <p>Transformed Kigali into one of the cleanest and safest cities in Africa. Major infrastructure projects like the Kigali Convention Centre have made the city a hub for international conferences and tourism, earning it the nickname "Africa's Cleanest City."</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="comparison reveal" style="background: var(--primary-color); color: #fff; padding: 80px 0;">
+    <section class="comparison reveal">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px;">Rwanda: Before & After</h2>
-            <div class="comp-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px;">
+            <h2><i class="fas fa-exchange-alt"></i> Rwanda: Before & After</h2>
+            <div class="comp-grid">
                 <div class="comp-item">
-                    <h3>Before 1994</h3>
-                    <ul style="list-style: disc; padding-left: 20px; margin-top: 20px;">
-                        <li>Extreme poverty and economic instability.</li>
-                        <li>High ethnic tensions and divisionism.</li>
-                        <li>Minimal infrastructure and healthcare access.</li>
-                        <li>Low global presence and investment.</li>
+                    <h3><i class="fas fa-history"></i> Before 1994</h3>
+                    <ul>
+                        <li>Extreme poverty and economic instability</li>
+                        <li>High ethnic tensions and divisionism</li>
+                        <li>Minimal infrastructure and healthcare access</li>
+                        <li>Low global presence and investment</li>
+                        <li>Limited educational opportunities</li>
+                        <li>Political instability and conflict</li>
                     </ul>
                 </div>
                 <div class="comp-item">
-                    <h3>Today</h3>
-                    <ul style="list-style: disc; padding-left: 20px; margin-top: 20px;">
-                        <li>Fastest-growing economy in the region.</li>
-                        <li>National unity and reconciliation.</li>
-                        <li>Universal healthcare and high literacy rates.</li>
-                        <li>Top destination for MICE (Meetings, Incentives, Conferences, and Exhibitions).</li>
+                    <h3><i class="fas fa-rocket"></i> Today</h3>
+                    <ul>
+                        <li>Fastest-growing economy in the region</li>
+                        <li>National unity and reconciliation</li>
+                        <li>Universal healthcare and high literacy rates</li>
+                        <li>Top destination for MICE (Meetings, Incentives, Conferences, and Exhibitions)</li>
+                        <li>World-class education system with digital learning</li>
+                        <li>Stable democracy with strong institutions</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section reveal">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px;"><i class="fas fa-chart-bar"></i> Rwanda by Numbers</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; color: #888;">Key statistics demonstrating Rwanda's remarkable transformation</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number">8%</div>
+                    <div class="label">Average Annual GDP Growth</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">90%</div>
+                    <div class="label">Health Insurance Coverage</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">61%</div>
+                    <div class="label">Women in Parliament</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">95%</div>
+                    <div class="label">4G LTE Coverage</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">1M+</div>
+                    <div class="label">Tourists Annually</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">100%</div>
+                    <div class="label">Primary School Enrollment</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials reveal">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px;"><i class="fas fa-comments"></i> International Recognition</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; color: #888;">What world leaders and organizations say about Rwanda's transformation</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"Rwanda has shown remarkable progress in rebuilding and developing its nation. The country's commitment to unity and development is an inspiration to Africa and the world."</p>
+                    <div class="testimonial-author">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--primary-color); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">UN</div>
+                        <div>
+                            <h4>United Nations</h4>
+                            <span>Development Report</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Rwanda's success in improving healthcare access and outcomes is a model for other developing nations. The Mutuelle de Santé program is truly revolutionary."</p>
+                    <div class="testimonial-author">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--accent-color); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">WHO</div>
+                        <div>
+                            <h4>World Health Organization</h4>
+                            <span>Health Systems Report</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The transformation of Rwanda under President Kagame's leadership is one of the most remarkable stories of national recovery and development in modern history."</p>
+                    <div class="testimonial-author">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--secondary-color); display: flex; align-items: center; justify-content: center; color: #333; font-weight: bold;">WB</div>
+                        <div>
+                            <h4>World Bank</h4>
+                            <span>Economic Analysis</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -110,6 +336,8 @@
                 <a href="achievements.html">Achievements</a>
                 <a href="gallery.html">Gallery</a>
                 <a href="news.html">News</a>
+                <a href="events.html">Events</a>
+                <a href="resources.html">Resources</a>
                 <a href="contact.html">Contact</a>
             </div>
             <p style="margin-bottom: 10px;">Educational Purpose - Professional Portfolio Project</p>

@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources | Paul Kagame</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .resources-container {
+            padding: 50px 0;
+        }
+        .resource-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .category-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        .category-card i {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .category-card h3 {
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        .category-card p {
+            color: #888;
+            font-size: 0.95rem;
+        }
+        .resource-section {
+            margin-bottom: 60px;
+        }
+        .resource-section h2 {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .resource-item {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary-color);
+        }
+        .resource-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        .resource-item .file-type {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 12px;
+            background: rgba(0, 163, 224, 0.1);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        .resource-item h4 {
+            margin-bottom: 10px;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+        .resource-item p {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: var(--primary-color);
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .download-btn:hover {
+            background: #0082b3;
+            transform: scale(1.05);
+        }
+        .video-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 50px;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .video-card {
+            background: var(--bg-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .video-thumbnail {
+            position: relative;
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary-color), #0082b3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .video-thumbnail i {
+            font-size: 4rem;
+            color: #fff;
+            opacity: 0.9;
+            transition: var(--transition);
+        }
+        .video-card:hover .video-thumbnail i {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+        .video-duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+        }
+        .video-info {
+            padding: 20px;
+        }
+        .video-info h4 {
+            margin-bottom: 8px;
+        }
+        .video-info p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .quick-links {
+            background: linear-gradient(135deg, var(--accent-color), #2d8a52);
+            color: #fff;
+            border-radius: 15px;
+            padding: 50px;
+            margin-bottom: 50px;
+        }
+        .quick-links h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .quick-link {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+            text-decoration: none;
+            color: #fff;
+        }
+        .quick-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        .quick-link i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto 50px;
+            position: relative;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            font-size: 1rem;
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .search-box button:hover {
+            background: #0082b3;
+        }
+        .stats-banner {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        .stat-item i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .stat-item .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        .stat-item .label {
+            color: #888;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Paul Kagame</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="biography.html">Biography</a></li>
+                    <li><a href="leadership.html">Leadership</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="resources.html" class="active">Resources</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-controls">
+                    <div id="theme-toggle"><i class="fas fa-moon"></i></div>
+                    <div class="hamburger"><i class="fas fa-bars"></i></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header" style="padding: 100px 0 50px; background: var(--card-bg); text-align: center;">
+        <div class="container">
+            <h1>Resources</h1>
+            <p style="font-size: 1.2rem; color: var(--primary-color);">Speeches, Documents, Publications & Media</p>
+        </div>
+    </section>
+
+    <section class="resources-container reveal">
+        <div class="container">
+            <!-- Search Box -->
+            <div class="search-box">
+                <input type="text" placeholder="Search resources..." id="resourceSearch">
+                <button onclick="searchResources()"><i class="fas fa-search"></i></button>
+            </div>
+
+            <!-- Stats Banner -->
+            <div class="stats-banner">
+                <div class="stat-item">
+                    <i class="fas fa-file-alt"></i>
+                    <div class="number">150+</div>
+                    <div class="label">Speeches</div>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-book"></i>
+                    <div class="number">45</div>
+                    <div class="label">Publications</div>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-video"></i>
+                    <div class="number">200+</div>
+                    <div class="label">Videos</div>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-image"></i>
+                    <div class="number">1000+</div>
+                    <div class="label">Photos</div>
+                </div>
+            </div>
+
+            <!-- Resource Categories -->
+            <div class="resource-categories">
+                <div class="category-card" onclick="scrollToSection('speeches')">
+                    <i class="fas fa-microphone-alt"></i>
+                    <h3>Speeches</h3>
+                    <p>Official addresses and keynote speeches</p>
+                </div>
+                <div class="category-card" onclick="scrollToSection('documents')">
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>Documents</h3>
+                    <p>Policy papers and official documents</p>
+                </div>
+                <div class="category-card" onclick="scrollToSection('videos')">
+                    <i class="fas fa-play-circle"></i>
+                    <h3>Videos</h3>
+                    <p>Interviews, speeches, and documentaries</p>
+                </div>
+                <div class="category-card" onclick="scrollToSection('publications')">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Publications</h3>
+                    <p>Books, articles, and reports</p>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="quick-links">
+                <h2><i class="fas fa-link"></i> Quick Access Links</h2>
+                <div class="links-grid">
+                    <a href="#" class="quick-link">
+                        <i class="fas fa-landmark"></i>
+                        <span>Office of the President</span>
+                    </a>
+                    <a href="#" class="quick-link">
+                        <i class="fas fa-flag"></i>
+                        <span>Government of Rwanda</span>
+                    </a>
+                    <a href="#" class="quick-link">
+                        <i class="fas fa-globe-africa"></i>
+                        <span>Visit Rwanda</span>
+                    </a>
+                    <a href="#" class="quick-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Rwanda Development Board</span>
+                    </a>
+                    <a href="#" class="quick-link">
+                        <i class="fas fa-university"></i>
+                        <span>National Bank of Rwanda</span>
+                    </a>
+                    <a href="#" class="quick-link">
+                        <i class="fas fa-hands-helping"></i>
+                        <span>Rwanda Cooperation</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Speeches Section -->
+            <div class="resource-section" id="speeches">
+                <h2><i class="fas fa-microphone-alt"></i> Recent Speeches</h2>
+                <div class="resource-grid">
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-file-pdf"></i> PDF</span>
+                        <h4>32nd Commemoration of the Genocide against the Tutsi</h4>
+                        <p>Full text of the commemoration address delivered on April 7, 2026</p>
+                        <div class="resource-meta">
+                            <span><i class="far fa-calendar"></i> April 7, 2026</span>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-file-pdf"></i> PDF</span>
+                        <h4>Keynote Address at African Union Summit</h4>
+                        <p>Address on African integration and continental development</p>
+                        <div class="resource-meta">
+                            <span><i class="far fa-calendar"></i> February 20, 2026</span>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-file-pdf"></i> PDF</span>
+                        <h4>New Year Address to the Nation 2026</h4>
+                        <p>Annual message to Rwandans at home and abroad</p>
+                        <div class="resource-meta">
+                            <span><i class="far fa-calendar"></i> January 1, 2026</span>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-file-pdf"></i> PDF</span>
+                        <h4>Address at UN General Assembly</h4>
+                        <p>Speech on global cooperation and sustainable development</p>
+                        <div class="resource-meta">
+                            <span><i class="far fa-calendar"></i> September 2025</span>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-file-pdf"></i> PDF</span>
+                        <h4>World Economic Forum Address</h4>
+                        <p>Keynote on Africa's economic transformation</p>
+                        <div class="resource-meta">
+                            <span><i class="far fa-calendar"></i> January 2025</span>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-file-pdf"></i> PDF</span>
+                        <h4>Inauguration of Karama Model Village</h4>
+                        <p>Speech on sustainable housing and community development</p>
+                        <div class="resource-meta">
+                            <span><i class="far fa-calendar"></i> January 28, 2026</span>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documents Section -->
+            <div class="resource-section" id="documents">
+                <h2><i class="fas fa-file-alt"></i> Official Documents</h2>
+                <div class="resource-grid">
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-file-pdf"></i> PDF</span>
+                        <h4>National Strategy for Transformation (NST1)</h4>
+                        <p>Rwanda's development roadmap 2017-2024</p>
+                        <div class="resource-meta">
+                            <span><i class="fas fa-file-archive"></i> 5.2 MB</span>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-file-pdf"></i> PDF</span>
+                        <h4>Vision 2050 Document</h4>
+                        <p>Long-term development vision for Rwanda</p>
+                        <div class="resource-meta">
+                            <span><i class="fas fa-file-archive"></i> 3.8 MB</span>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-file-pdf"></i> PDF</span>
+                        <h4>Smart Rwanda Master Plan</h4>
+                        <p>ICT and digital transformation strategy</p>
+                        <div class="resource-meta">
+                            <span><i class="fas fa-file-archive"></i> 4.1 MB</span>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-file-pdf"></i> PDF</span>
+                        <h4>Green Growth and Climate Resilience Strategy</h4>
+                        <p>Environmental sustainability and climate action plan</p>
+                        <div class="resource-meta">
+                            <span><i class="fas fa-file-archive"></i> 6.5 MB</span>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-file-pdf"></i> PDF</span>
+                        <h4>Annual Presidential Report 2025</h4>
+                        <p>Comprehensive report on national progress and achievements</p>
+                        <div class="resource-meta">
+                            <span><i class="fas fa-file-archive"></i> 8.2 MB</span>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-file-pdf"></i> PDF</span>
+                        <h4>Gender Equality Strategy</h4>
+                        <p>National policy on women's empowerment and gender equality</p>
+                        <div class="resource-meta">
+                            <span><i class="fas fa-file-archive"></i> 2.9 MB</span>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Videos Section -->
+            <div class="video-section" id="videos">
+                <h2 style="margin-bottom: 30px;"><i class="fas fa-video"></i> Featured Videos</h2>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                            <span class="video-duration">45:30</span>
+                        </div>
+                        <div class="video-info">
+                            <h4>32nd Commemoration Address</h4>
+                            <p>April 7, 2026 - Kigali Genocide Memorial</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                            <span class="video-duration">32:15</span>
+                        </div>
+                        <div class="video-info">
+                            <h4>African Union Summit Keynote</h4>
+                            <p>February 20, 2026 - Addis Ababa</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                            <span class="video-duration">28:45</span>
+                        </div>
+                        <div class="video-info">
+                            <h4>Interview with CNN</h4>
+                            <p>January 2026 - Rwanda's Transformation Story</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                            <span class="video-duration">15:20</span>
+                        </div>
+                        <div class="video-info">
+                            <h4>Digital Innovation Hub Launch</h4>
+                            <p>January 15, 2026 - Kigali</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                            <span class="video-duration">52:00</span>
+                        </div>
+                        <div class="video-info">
+                            <h4>World Economic Forum Panel</h4>
+                            <p>January 2025 - Davos</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                            <span class="video-duration">38:30</span>
+                        </div>
+                        <div class="video-info">
+                            <h4>CHOGM 2025 Opening Ceremony</h4>
+                            <p>December 2025 - Kigali Convention Centre</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Publications Section -->
+            <div class="resource-section" id="publications">
+                <h2><i class="fas fa-book"></i> Publications</h2>
+                <div class="resource-grid">
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-book"></i> Book</span>
+                        <h4>Rwanda, Inc.: How a Devastated Nation Became an Economic Model</h4>
+                        <p>By Patricia Crisafulli and Andrea Redmond - Featuring insights on Rwanda's transformation</p>
+                        <div class="resource-meta">
+                            <span><i class="fas fa-external-link-alt"></i> Available on Amazon</span>
+                            <a href="#" class="download-btn"><i class="fas fa-external-link-alt"></i> View</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-newspaper"></i> Article</span>
+                        <h4>The African Century: Rwanda's Role in Continental Transformation</h4>
+                        <p>Published in Foreign Affairs - Analysis of Rwanda's influence in Africa</p>
+                        <div class="resource-meta">
+                            <span><i class="far fa-calendar"></i> March 2025</span>
+                            <a href="#" class="download-btn"><i class="fas fa-read"></i> Read</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-file-alt"></i> Report</span>
+                        <h4>World Bank Rwanda Economic Update</h4>
+                        <p>Comprehensive analysis of Rwanda's economic performance and outlook</p>
+                        <div class="resource-meta">
+                            <span><i class="far fa-calendar"></i> 2025 Edition</span>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-file-alt"></i> Report</span>
+                        <h4>UNDP Human Development Report - Rwanda Chapter</h4>
+                        <p>Assessment of human development indicators and progress</p>
+                        <div class="resource-meta">
+                            <span><i class="far fa-calendar"></i> 2025</span>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-newspaper"></i> Article</span>
+                        <h4>Technology as a Driver of Development: The Rwanda Experience</h4>
+                        <p>Published in MIT Technology Review - Rwanda's digital transformation journey</p>
+                        <div class="resource-meta">
+                            <span><i class="far fa-calendar"></i> November 2025</span>
+                            <a href="#" class="download-btn"><i class="fas fa-read"></i> Read</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <span class="file-type"><i class="fas fa-book"></i> Book</span>
+                        <h4>From ashes to excellence: Stories of Rwandan Resilience</h4>
+                        <p>Collection of stories documenting Rwanda's recovery and transformation</p>
+                        <div class="resource-meta">
+                            <span><i class="fas fa-external-link-alt"></i> Available in Libraries</span>
+                            <a href="#" class="download-btn"><i class="fas fa-info-circle"></i> Info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="biography.html">Biography</a>
+                <a href="leadership.html">Leadership</a>
+                <a href="achievements.html">Achievements</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="news.html">News</a>
+                <a href="events.html">Events</a>
+                <a href="resources.html">Resources</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p style="margin-bottom: 10px;">Educational Purpose - Professional Portfolio Project</p>
+            <div class="footer-bottom">
+                &copy; 2026 Paul Kagame Portfolio. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <div id="scroll-top"><i class="fas fa-arrow-up"></i></div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function searchResources() {
+            const query = document.getElementById('resourceSearch').value.toLowerCase();
+            const resourceItems = document.querySelectorAll('.resource-item');
+            
+            resourceItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+        
+        // Allow Enter key to trigger search
+        document.getElementById('resourceSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchResources();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -94,4 +94,99 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.add('active');
         }
     });
+
+    // Global Visitor Tracking
+    trackGlobalVisitor();
 });
+
+// Global Visitor Tracking System
+function trackGlobalVisitor() {
+    // Generate or retrieve visitor ID
+    let visitorId = localStorage.getItem('pk_visitor_id');
+    if (!visitorId) {
+        visitorId = 'PK_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('pk_visitor_id', visitorId);
+    }
+
+    // Track session start time
+    if (!sessionStorage.getItem('session_start')) {
+        sessionStorage.setItem('session_start', Date.now());
+    }
+
+    // Track total visits
+    let totalVisits = parseInt(localStorage.getItem('pk_total_visits') || '0');
+    
+    // Check if this is a new session (more than 30 minutes since last visit)
+    const lastVisit = localStorage.getItem('pk_last_visit');
+    const now = Date.now();
+    const thirtyMinutes = 30 * 60 * 1000;
+    
+    if (!lastVisit || (now - parseInt(lastVisit)) > thirtyMinutes) {
+        totalVisits++;
+        localStorage.setItem('pk_total_visits', totalVisits);
+    }
+    
+    localStorage.setItem('pk_last_visit', now);
+
+    // Track unique pages visited
+    let pagesVisited = JSON.parse(localStorage.getItem('pk_pages_visited') || '[]');
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    if (!pagesVisited.includes(currentPage)) {
+        pagesVisited.push(currentPage);
+        localStorage.setItem('pk_pages_visited', JSON.stringify(pagesVisited));
+    }
+
+    // Track page views for this session
+    let sessionPageViews = parseInt(sessionStorage.getItem('pk_session_page_views') || '0');
+    sessionPageViews++;
+    sessionStorage.setItem('pk_session_page_views', sessionPageViews);
+
+    // Store visit history
+    let visitHistory = JSON.parse(localStorage.getItem('pk_visit_history') || '[]');
+    visitHistory.push({
+        page: currentPage,
+        timestamp: now,
+        visitorId: visitorId
+    });
+    // Keep only last 100 visits
+    if (visitHistory.length > 100) {
+        visitHistory = visitHistory.slice(-100);
+    }
+    localStorage.setItem('pk_visit_history', JSON.stringify(visitHistory));
+
+    // Log visitor stats (for debugging)
+    console.log('Visitor Stats:', {
+        visitorId: visitorId,
+        totalVisits: totalVisits,
+        pagesVisited: pagesVisited.length,
+        sessionPageViews: sessionPageViews,
+        currentPage: currentPage
+    });
+}
+
+// Get visitor statistics
+function getVisitorStats() {
+    return {
+        visitorId: localStorage.getItem('pk_visitor_id'),
+        totalVisits: parseInt(localStorage.getItem('pk_total_visits') || '0'),
+        pagesVisited: JSON.parse(localStorage.getItem('pk_pages_visited') || '[]'),
+        lastVisit: localStorage.getItem('pk_last_visit'),
+        visitHistory: JSON.parse(localStorage.getItem('pk_visit_history') || '[]')
+    };
+}
+
+// Clear visitor data (for testing)
+function clearVisitorData() {
+    localStorage.removeItem('pk_visitor_id');
+    localStorage.removeItem('pk_total_visits');
+    localStorage.removeItem('pk_pages_visited');
+    localStorage.removeItem('pk_last_visit');
+    localStorage.removeItem('pk_visit_history');
+    sessionStorage.clear();
+    console.log('Visitor data cleared');
+}
+
+// Export functions for use in other scripts
+window.trackGlobalVisitor = trackGlobalVisitor;
+window.getVisitorStats = getVisitorStats;
+window.clearVisitorData = clearVisitorData;

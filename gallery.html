@@ -20,10 +20,11 @@
             border-radius: 10px;
             cursor: pointer;
             box-shadow: var(--shadow);
+            aspect-ratio: 4/3;
         }
         .gallery-item img {
             width: 100%;
-            height: 250px;
+            height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
@@ -36,7 +37,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 163, 224, 0.7);
+            background: rgba(0, 163, 224, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -44,9 +45,14 @@
             transition: var(--transition);
             color: #fff;
             font-weight: 600;
+            flex-direction: column;
         }
         .gallery-item:hover .overlay {
             opacity: 1;
+        }
+        .overlay i {
+            font-size: 2rem;
+            margin-bottom: 10px;
         }
 
         /* Modal */
@@ -58,29 +64,55 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             align-items: center;
             justify-content: center;
             flex-direction: column;
         }
+        .modal.active {
+            display: flex;
+        }
         .modal-content {
             max-width: 90%;
-            max-height: 80%;
+            max-height: 80vh;
             border-radius: 10px;
         }
         .modal-caption {
             color: #fff;
             margin-top: 20px;
             font-size: 1.2rem;
+            text-align: center;
         }
         .close-modal {
             position: absolute;
             top: 30px;
             right: 30px;
             color: #fff;
-            font-size: 2rem;
+            font-size: 2.5rem;
             cursor: pointer;
+            transition: var(--transition);
         }
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: none;
+            padding: 20px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        .modal-nav:hover {
+            background: var(--primary-color);
+        }
+        .modal-prev { left: 20px; }
+        .modal-next { right: 20px; }
 
         /* Slider */
         .slider-container {
@@ -120,6 +152,79 @@
         }
         .prev { left: 20px; }
         .next { right: 20px; }
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 10px 25px;
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-color);
+            color: #fff;
+        }
+        .video-section {
+            padding: 60px 0;
+            background: var(--card-bg);
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .video-card {
+            background: var(--bg-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .video-thumbnail {
+            position: relative;
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary-color), #0082b3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .video-thumbnail i {
+            font-size: 3rem;
+            color: #fff;
+            transition: var(--transition);
+        }
+        .video-card:hover .video-thumbnail i {
+            transform: scale(1.2);
+        }
+        .video-duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+        }
+        .video-info {
+            padding: 20px;
+        }
+        .video-info h4 {
+            margin-bottom: 8px;
+        }
+        .video-info p {
+            color: #888;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -135,6 +240,8 @@
                     <li><a href="achievements.html">Achievements</a></li>
                     <li><a href="gallery.html" class="active">Gallery</a></li>
                     <li><a href="news.html">News</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="resources.html">Resources</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <div class="nav-controls">
@@ -156,9 +263,9 @@
         <div class="container">
             <div class="slider-container">
                 <div class="slider" id="slider">
-                    <div class="slide"><img src="assets/images/yxyax3LWVTob.jpg" alt="Rwanda Development"></div>
-                    <div class="slide"><img src="assets/images/xXqrp3CkgdmW.jpg" alt="Model Village"></div>
-                    <div class="slide"><img src="assets/images/CvRLSjQWCl7j.jpg" alt="Public Address"></div>
+                    <div class="slide"><img src="assets/images/Rwanda Dev2.png" alt="Rwanda Development"></div>
+                    <div class="slide"><img src="assets/images/Model Village.jpg" alt="Model Village"></div>
+                    <div class="slide"><img src="assets/images/Public Address.jpg" alt="Public Address"></div>
                 </div>
                 <button class="slider-btn prev" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
                 <button class="slider-btn next" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
@@ -168,37 +275,103 @@
 
     <section class="gallery-section reveal">
         <div class="container">
-            <div class="gallery-grid">
-                <div class="gallery-item" onclick="openModal('assets/images/ZU34AkmT9CVb.jpeg', 'Official Portrait')">
-                    <img src="assets/images/ZU34AkmT9CVb.jpeg" alt="Portrait">
-                    <div class="overlay">View Large</div>
+            <h2 style="text-align: center; margin-bottom: 20px;"><i class="fas fa-images"></i> Photo Gallery</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; color: #888;">A collection of images capturing key moments of leadership and national development</p>
+            
+            <div class="gallery-filter">
+                <button class="filter-btn active" onclick="filterGallery('all')">All</button>
+                <button class="filter-btn" onclick="filterGallery('official')">Official</button>
+                <button class="filter-btn" onclick="filterGallery('development')">Development</button>
+                <button class="filter-btn" onclick="filterGallery('events')">Events</button>
+            </div>
+            
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-item" data-category="official" onclick="openModal(0)">
+                    <img src="assets/images/Propi.jpg" alt="Official Portrait">
+                    <div class="overlay"><i class="fas fa-search-plus"></i> View Large</div>
                 </div>
-                <div class="gallery-item" onclick="openModal('assets/images/yxyax3LWVTob.jpg', 'Rwanda\'s Rapid Development')">
-                    <img src="assets/images/yxyax3LWVTob.jpg" alt="Development">
-                    <div class="overlay">View Large</div>
+                <div class="gallery-item" data-category="development" onclick="openModal(1)">
+                    <img src="assets/images/Rwanda's Rapid Development.jpg" alt="Rwanda's Rapid Development">
+                    <div class="overlay"><i class="fas fa-search-plus"></i> View Large</div>
                 </div>
-                <div class="gallery-item" onclick="openModal('assets/images/xXqrp3CkgdmW.jpg', 'Inaugurating Karama Model Village')">
-                    <img src="assets/images/xXqrp3CkgdmW.jpg" alt="Village">
-                    <div class="overlay">View Large</div>
+                <div class="gallery-item" data-category="events" onclick="openModal(2)">
+                    <img src="assets/images/Inaugurating Karama Model Village.jpg" alt="Inaugurating Karama Model Village">
+                    <div class="overlay"><i class="fas fa-search-plus"></i> View Large</div>
                 </div>
-                <div class="gallery-item" onclick="openModal('assets/images/nBCxttxMy4Od.jpg', 'Eco-Friendly Housing Projects')">
-                    <img src="assets/images/nBCxttxMy4Od.jpg" alt="Housing">
-                    <div class="overlay">View Large</div>
+                <div class="gallery-item" data-category="development" onclick="openModal(3)">
+                    <img src="assets/images/Eco-Friendly Housing Projects.jpg" alt="Eco-Friendly Housing Projects">
+                    <div class="overlay"><i class="fas fa-search-plus"></i> View Large</div>
                 </div>
-                <div class="gallery-item" onclick="openModal('assets/images/CvRLSjQWCl7j.jpg', 'Addressing the Nation')">
-                    <img src="assets/images/CvRLSjQWCl7j.jpg" alt="Speech">
-                    <div class="overlay">View Large</div>
+                <div class="gallery-item" data-category="official" onclick="openModal(4)">
+                    <img src="assets/images/Addressing the Nation.jpg" alt="Addressing the Nation">
+                    <div class="overlay"><i class="fas fa-search-plus"></i> View Large</div>
                 </div>
-                <div class="gallery-item" onclick="openModal('assets/images/pDkc6galMnId.jpg', 'Inspirational Leadership')">
-                    <img src="assets/images/pDkc6galMnId.jpg" alt="Leader">
-                    <div class="overlay">View Large</div>
+                <div class="gallery-item" data-category="official" onclick="openModal(5)">
+                    <img src="assets/images/Inspirational Leadership.jpg" alt="Inspirational Leadership">
+                    <div class="overlay"><i class="fas fa-search-plus"></i> View Large</div>
                 </div>
+                <div class="gallery-item" data-category="events" onclick="openModal(6)">
+                    <img src="assets/images/National Event.webp" alt="National Event">
+                    <div class="overlay"><i class="fas fa-search-plus"></i> View Large</div>
+                </div>
+                <div class="gallery-item" data-category="development" onclick="openModal(7)">
+                    <img src="assets/images/Infrastructure Development.jpg" alt="Infrastructure Development">
+                    <div class="overlay"><i class="fas fa-search-plus"></i> View Large</div>
+                </div>
+                <div class="gallery-item" data-category="events" onclick="openModal(8)">
+                    <img src="assets/images/Community Event.jpg" alt="Community Event">
+                    <div class="overlay"><i class="fas fa-search-plus"></i> View Large</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="video-section reveal">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px;"><i class="fas fa-video"></i> Featured Videos</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; color: #888;">Watch speeches, interviews, and documentaries</p>
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <i class="fas fa-play-circle"></i>
+                        <span class="video-duration">45:30</span>
+                    </div>
+                    <div class="video-info">
+                        <h4>32nd Commemoration Address</h4>
+                        <p>April 7, 2026 - Kigali Genocide Memorial</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <i class="fas fa-play-circle"></i>
+                        <span class="video-duration">32:15</span>
+                    </div>
+                    <div class="video-info">
+                        <h4>African Union Summit Keynote</h4>
+                        <p>February 20, 2026 - Addis Ababa</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <i class="fas fa-play-circle"></i>
+                        <span class="video-duration">28:45</span>
+                    </div>
+                    <div class="video-info">
+                        <h4>Interview with CNN</h4>
+                        <p>Rwanda's Transformation Story</p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="resources.html#videos" class="btn">View All Videos</a>
             </div>
         </div>
     </section>
 
     <div class="modal" id="galleryModal">
         <span class="close-modal" onclick="closeModal()">&times;</span>
+        <button class="modal-nav modal-prev" onclick="changeImage(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="modal-nav modal-next" onclick="changeImage(1)"><i class="fas fa-chevron-right"></i></button>
         <img class="modal-content" id="modalImg">
         <div class="modal-caption" id="modalCaption"></div>
     </div>
@@ -212,6 +385,8 @@
                 <a href="achievements.html">Achievements</a>
                 <a href="gallery.html">Gallery</a>
                 <a href="news.html">News</a>
+                <a href="events.html">Events</a>
+                <a href="resources.html">Resources</a>
                 <a href="contact.html">Contact</a>
             </div>
             <p style="margin-bottom: 10px;">Educational Purpose - Professional Portfolio Project</p>
@@ -225,6 +400,21 @@
 
     <script src="assets/js/main.js"></script>
     <script>
+        // Gallery images data
+        const galleryImages = [
+            { src: 'assets/images/Addressing the Nation.jpg', caption: 'Official Portrait' },
+            { src: 'assets/images/Rwanda\'s Rapid Development.jpg', caption: 'Rwanda\'s Rapid Development' },
+            { src: 'assets/images/Inaugurating Karama Model Village.jpg', caption: 'Inaugurating Karama Model Village' },
+            { src: 'assets/images/Eco-Friendly Housing Projects.jpg', caption: 'Eco-Friendly Housing Projects' },
+            { src: 'assets/images/Addressing the Nation.jpg', caption: 'Addressing the Nation' },
+            { src: 'assets/images/Inspirational Leadership.jpg', caption: 'Inspirational Leadership' },
+            { src: 'assets/images/National Event.jpg', caption: 'National Event' },
+            { src: 'assets/images/Infrastructure Development.jpg', caption: 'Infrastructure Development' },
+            { src: 'assets/images/Community Event.jpg', caption: 'Community Event' }
+        ];
+        
+        let currentImageIndex = 0;
+
         // Slider
         let currentSlide = 0;
         const slider = document.getElementById('slider');
@@ -243,20 +433,59 @@
         const modalImg = document.getElementById('modalImg');
         const modalCaption = document.getElementById('modalCaption');
 
-        function openModal(src, caption) {
-            modal.style.display = 'flex';
-            modalImg.src = src;
-            modalCaption.innerText = caption;
+        function openModal(index) {
+            currentImageIndex = index;
+            updateModalImage();
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function updateModalImage() {
+            modalImg.src = galleryImages[currentImageIndex].src;
+            modalCaption.innerText = galleryImages[currentImageIndex].caption;
+        }
+        
+        function changeImage(direction) {
+            currentImageIndex = (currentImageIndex + direction + galleryImages.length) % galleryImages.length;
+            updateModalImage();
         }
 
         function closeModal() {
-            modal.style.display = 'none';
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
         }
 
-        window.onclick = function(event) {
-            if (event.target == modal) {
+        // Close modal on outside click
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
                 closeModal();
             }
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (!modal.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'ArrowRight') changeImage(1);
+        });
+        
+        // Gallery filter
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         }
     </script>
 </body>
