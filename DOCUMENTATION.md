@@ -1,131 +1,127 @@
-Paul Kagame Portfolio Website – Project Report
+Paul Kagame Portfolio Website – Report
 1. Website Purpose
-The Paul Kagame Portfolio Website is an educational and interactive web project designed to showcase the life, leadership, achievements, and contributions of the President of Rwanda. The main goal of this website is to provide users with structured, engaging, and accessible information about national development, governance, and leadership.
+The Paul Kagame Portfolio Website is an educational web project developed to present information about the life, leadership, and achievements of the President of Rwanda. The website is designed to organize content in a clear and interactive way, allowing users to explore different sections such as biography, leadership, achievements, news, events, and resources.
 
-Beyond simple presentation, the website focuses on user interaction and modern web experience, allowing visitors to actively engage through comments, likes, and navigation across multiple content sections such as biography, news, events, and resources.
-
-Additionally, the project serves as a practical demonstration of front-end development skills, combining design, responsiveness, and JavaScript functionality to simulate a real-world web application.
+The project also aims to demonstrate practical front-end development skills by creating a responsive and user-friendly website with interactive features.
 
 2. Tools and Technologies Used
-The website was developed using modern front-end technologies:
+The website was developed using the following technologies:
 
-HTML5
-Used to structure all web pages with semantic and accessible markup.
+HTML5 for structuring the web pages
 
-CSS3
-Applied for styling, layout, and responsiveness using:
+CSS3 for styling, layout, and responsiveness (Flexbox, Grid, animations)
 
-Flexbox and Grid
+JavaScript (ES6+) for adding interactivity and dynamic behavior
 
-Animations and transitions
+Browser APIs used:
 
-CSS variables for theming (dark/light mode)
+localStorage for storing user data such as comments, likes, and visits
 
-JavaScript (ES6+)
-Used to implement dynamic features such as:
+sessionStorage for tracking session activity
 
-Theme toggling
+Intersection Observer API for scroll animations
 
-Comment system
+Additional tools:
 
-Visitor tracking
+Font Awesome for icons
 
-Interactive UI components
-
-Browser APIs
-
-localStorage – for saving user data (comments, likes, visits)
-
-sessionStorage – for session tracking
-
-Intersection Observer – for scroll animations
-
-External Libraries
-
-Font Awesome – icons
-
-Google Fonts (Poppins) – typography
+Google Fonts for typography
 
 3. Key Features Implemented
-The website includes several interactive and user-friendly features:
+Responsive Design: The website adapts to different screen sizes (desktop, tablet, and mobile).
 
-1. Dark/Light Theme Toggle
-Users can switch between dark and light modes. The selected theme is saved using localStorage, ensuring it remains consistent across visits.
+Dark/Light Theme Toggle: Users can switch themes, and their preference is saved.
 
-2. Responsive Design
-The website is fully responsive and works on desktop, tablet, and mobile devices. A hamburger menu is used for smaller screens.
+Interactive News Section: Includes multiple articles with filtering, “Read More,” and “View More” functionality.
 
-3. Interactive News System
-9 news articles with category filtering
+Comment System: Users can post comments stored in localStorage.
 
-“Read More” and “View More” functionality
+Like System: Users can like/unlike articles with persistent counts.
 
-Like and comment system with persistent data
+Visitor Tracking: Tracks total visits, unique visitors, and page views using localStorage.
 
-4. Local Storage Functionality
-The project uses localStorage to simulate backend behavior:
+Scroll Features: Includes scroll-to-top button and scroll reveal animations.
 
-Saving comments per article
-
-Tracking likes and preventing duplicates
-
-Storing contact form messages
-
-Managing newsletter subscriptions
-
-5. Visitor Tracking System
-Tracks:
-
-Total visits
-
-Unique visitors
-
-Pages visited
-
-User activity history
-
-6. Scroll-Based Features
-Scroll-to-top button
-
-Scroll reveal animations using Intersection Observer
-
-7. Additional Pages
-Two new pages were added:
-
-Events Page – displays upcoming and past events with newsletter subscription
-
-Resources Page – provides access to documents, speeches, and publications
+Additional Pages: Events and Resources pages provide extended content and functionality.
 
 4. Challenges Faced and Solutions
-Challenge 1: Data Persistence Without Backend
-Since the project does not use a database, maintaining user data (comments, likes) was difficult.
+Data Storage Without Backend:
+Since there is no server or database, storing user interactions was difficult.
+Solution: Used localStorage to save and retrieve data across sessions.
 
-Solution:
-Used localStorage to store and retrieve data, allowing persistence across sessions without a server.
+Managing Multiple Features:
+Handling comments, likes, and tracking increased code complexity.
+Solution: Organized code into clear functions and used structured storage keys.
 
-Challenge 2: Managing Multiple Interactive Features
-Combining features like comments, likes, and visitor tracking created complexity in JavaScript logic.
+Responsive Layout Issues:
+Ensuring proper display on all devices required adjustments.
+Solution: Applied CSS Flexbox, Grid, and media queries.
 
-Solution:
-Organized code into reusable functions (e.g., addComment(), toggleLike()) and used clear naming conventions for storage keys.
+Performance of Animations:
+Continuous scroll events affected performance.
+Solution: Used Intersection Observer API for efficient animations.
+Paul Kagame Portfolio Website – Report
+1. Website Purpose
+The Paul Kagame Portfolio Website is an educational web project developed to present information about the life, leadership, and achievements of the President of Rwanda. The website is designed to organize content in a clear and interactive way, allowing users to explore different sections such as biography, leadership, achievements, news, events, and resources.
 
-Challenge 3: Responsive Design Issues
-Ensuring the website looks good on all screen sizes required careful layout adjustments.
+The project also aims to demonstrate practical front-end development skills by creating a responsive and user-friendly website with interactive features.
 
-Solution:
-Used CSS Flexbox and Grid along with media queries to create a flexible and adaptive layout.
+2. Tools and Technologies Used
+The website was developed using the following technologies:
 
-Challenge 4: Smooth User Experience
-Animations and transitions initially caused performance issues.
+HTML5 for structuring the web pages
 
-Solution:
-Implemented the Intersection Observer API for efficient scroll animations instead of heavy event listeners.
+CSS3 for styling, layout, and responsiveness (Flexbox, Grid, animations)
 
-Challenge 5: Navigation Consistency
-Keeping navigation consistent across all pages was challenging during expansion.
+JavaScript (ES6+) for adding interactivity and dynamic behavior
 
-Solution:
-Standardized the navigation bar and updated all pages to maintain uniform structure and usability.
+Browser APIs used:
+
+localStorage for storing user data such as comments, likes, and visits
+
+sessionStorage for tracking session activity
+
+Intersection Observer API for scroll animations
+
+Additional tools:
+
+Font Awesome for icons
+
+Google Fonts for typography
+
+3. Key Features Implemented
+Responsive Design: The website adapts to different screen sizes (desktop, tablet, and mobile).
+
+Dark/Light Theme Toggle: Users can switch themes, and their preference is saved.
+
+Interactive News Section: Includes multiple articles with filtering, “Read More,” and “View More” functionality.
+
+Comment System: Users can post comments stored in localStorage.
+
+Like System: Users can like/unlike articles with persistent counts.
+
+Visitor Tracking: Tracks total visits, unique visitors, and page views using localStorage.
+
+Scroll Features: Includes scroll-to-top button and scroll reveal animations.
+
+Additional Pages: Events and Resources pages provide extended content and functionality.
+
+4. Challenges Faced and Solutions
+Data Storage Without Backend:
+Since there is no server or database, storing user interactions was difficult.
+Solution: Used localStorage to save and retrieve data across sessions.
+
+Managing Multiple Features:
+Handling comments, likes, and tracking increased code complexity.
+Solution: Organized code into clear functions and used structured storage keys.
+
+Responsive Layout Issues:
+Ensuring proper display on all devices required adjustments.
+Solution: Applied CSS Flexbox, Grid, and media queries.
+
+Performance of Animations:
+Continuous scroll events affected performance.
+Solution: Used Intersection Observer API for efficient animations.
 
 Conclusion
-The Paul Kagame Portfolio Website successfully demonstrates the use of modern front-end technologies to build an interactive, responsive, and user-focused web application. It highlights both technical skills and the ability to solve real-world development challenges without relying on backend systems.
+This project demonstrates the ability to build a modern, interactive, and responsive website using front-end technologies while solving practical development challenges without backend support.
