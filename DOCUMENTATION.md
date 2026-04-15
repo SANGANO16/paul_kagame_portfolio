@@ -1,391 +1,131 @@
-# Paul Kagame Portfolio Website - Documentation
-
-## Table of Contents
-1. [Project Overview](#project-overview)
-2. [Website Structure](#website-structure)
-3. [Features & Functionality](#features--functionality)
-4. [Local Storage Implementation](#local-storage-implementation)
-5. [Page Descriptions](#page-descriptions)
-6. [Technical Specifications](#technical-specifications)
-7. [Usage Guide](#usage-guide)
-8. [Browser Compatibility](#browser-compatibility)
-
----
-
-## Project Overview
-
-The Paul Kagame Portfolio Website is a comprehensive educational web project showcasing the life, leadership, achievements, and ongoing work of President Paul Kagame of Rwanda. The website has been enhanced with modern features including local storage functionality for comments, visitor tracking, and an expanded news section with working "View More" functionality.
-
-### Key Enhancements Made:
-- Expanded news section with 9 news items and working "View More" functionality
-- Local storage-based comment system for immediate user engagement
-- Visitor tracking system using local storage
-- Two new pages: Events and Resources
-- Updated navigation across all pages
-- Enhanced content and styling throughout
-
----
-
-## Website Structure
-
-```
-/
-├── index.html              # Homepage with hero section and highlights
-├── biography.html          # Biography and life story
-├── leadership.html         # Leadership philosophy and vision
-├── achievements.html       # Major achievements and impact
-├── gallery.html           # Photo and video gallery
-├── news.html              # News and speeches with comments
-├── events.html            # Upcoming and past events (NEW)
-├── resources.html         # Documents, speeches, publications (NEW)
-├── contact.html           # Contact form and information
-├── assets/
-│   ├── css/
-│   │   └── style.css      # Global stylesheet
-│   ├── js/
-│   │   └── main.js        # Global JavaScript functionality
-│   └── images/            # Image assets
-└── DOCUMENTATION.md       # This documentation file
-```
-
----
-
-## Features & Functionality
-
-### 1. Dark/Light Theme Toggle
-- **Location:** All pages (header navigation)
-- **Functionality:** Users can toggle between dark and light themes
-- **Persistence:** Theme preference is saved in localStorage
-- **Implementation:** CSS variables with data-theme attribute
-
-### 2. Mobile Responsive Navigation
-- **Hamburger Menu:** Appears on screens smaller than 992px
-- **Smooth Animation:** Menu slides in/out with icon change
-- **Accessibility:** Proper focus states and keyboard navigation
-
-### 3. Scroll-to-Top Button
-- **Trigger:** Appears after scrolling 300px
-- **Animation:** Smooth scroll to top of page
-- **Styling:** Fixed position with hover effects
-
-### 4. Scroll Reveal Animations
-- **Effect:** Elements fade in and slide up when entering viewport
-- **Implementation:** Intersection Observer API
-- **Applied to:** All major content sections
-
-### 5. Dynamic Greeting
-- **Location:** Homepage
-- **Functionality:** Displays time-appropriate greeting (Good Morning/Afternoon/Evening)
-- **Implementation:** JavaScript Date object
-
----
-
-## Local Storage Implementation
-
-### 1. Comment System (News Page)
-
-**Features:**
-- Users can post comments on news articles
-- Comments are stored in localStorage and persist across sessions
-- Comments display immediately after posting
-- Each comment includes: name, text, timestamp, and unique ID
-- Comment count displayed for each article
-
-**Storage Structure:**
-```javascript
-// Comments stored per article
-localStorage.setItem(`comments-${articleId}`, JSON.stringify([
-    { id: timestamp, name: "User Name", text: "Comment text", timestamp: "ISO date" }
-]));
-```
-
-**Functions:**
-- `addComment(id)` - Adds a new comment
-- `loadComments(id)` - Loads and displays comments
-- `toggleComments(id)` - Shows/hides comment section
-
-### 2. Like System (News Page)
-
-**Features:**
-- Users can like/unlike news articles
-- Like count persists across sessions
-- Visual feedback with icon change
-- Prevents duplicate likes from same user
-
-**Storage Structure:**
-```javascript
-localStorage.setItem(`likes-${articleId}`, likeCount);
-localStorage.setItem(`user-liked-${articleId}`, "true/false");
-```
-
-**Functions:**
-- `toggleLike(id)` - Toggles like status
-
-### 3. Visitor Tracking System
-
-**Global Tracking (main.js):**
-- Unique visitor ID generation
-- Total visits counter
-- Pages visited tracking
-- Session page views
-- Visit history with timestamps
-
-**News Page Specific Tracking:**
-- Total visitors display
-- Unique visitors count
-- Page views counter
-- Total comments across all articles
-
-**Storage Structure:**
-```javascript
-// Global visitor data
-localStorage.setItem('pk_visitor_id', uniqueId);
-localStorage.setItem('pk_total_visits', count);
-localStorage.setItem('pk_pages_visited', JSON.stringify([]));
-localStorage.setItem('pk_visit_history', JSON.stringify([]));
-
-// News page specific
-localStorage.setItem('totalVisits', count);
-localStorage.setItem('uniqueVisitors', JSON.stringify([]));
-localStorage.setItem('newsPageViews', count);
-```
-
-**Functions:**
-- `trackGlobalVisitor()` - Tracks visitor across all pages
-- `trackVisitor()` - News page specific tracking
-- `getVisitorStats()` - Returns visitor statistics
-- `clearVisitorData()` - Clears all visitor data (for testing)
-
-### 4. Newsletter Subscription (Events Page)
-
-**Features:**
-- Email subscription form
-- Stores subscriber emails in localStorage
-- Success message feedback
-
-**Storage Structure:**
-```javascript
-localStorage.setItem('newsletterSubscribers', JSON.stringify([email1, email2, ...]));
-```
-
-### 5. Contact Form Messages
-
-**Features:**
-- Stores submitted contact form messages
-- Includes name, email, subject, message, and timestamp
-
-**Storage Structure:**
-```javascript
-localStorage.setItem('contactMessages', JSON.stringify([
-    { name, email, subject, message, timestamp }
-]));
-```
-
----
-
-## Page Descriptions
-
-### 1. Homepage (index.html)
-- Hero section with typing animation
-- Introduction to Paul Kagame
-- Key highlights cards
-- Statistics counter animation
-- Latest news preview
-- Inspirational quote
-
-### 2. Biography (biography.html)
-- Detailed life story
-- Quick facts sidebar
-- Interactive timeline
-- Awards and recognition section
-- Personal philosophy
-
-### 3. Leadership (leadership.html)
-- Leadership style description
-- Vision 2050 showcase
-- Key policies with tabbed interface
-- Leadership qualities icons
-- Inspirational quotes
-
-### 4. Achievements (achievements.html)
-- Major achievement cards
-- Before/After comparison
-- Statistics by numbers
-- International recognition testimonials
-
-### 5. Gallery (gallery.html)
-- Image slider/carousel
-- Filterable photo gallery
-- Modal lightbox with navigation
-- Featured videos section
-
-### 6. News (news.html) - ENHANCED
-- **9 News Articles:** Covering speeches, events, development, and diplomacy
-- **Category Filtering:** Filter by All, Speeches, Events, Development, Diplomacy
-- **Read More Functionality:** Expand/collapse full article content
-- **View More Button:** Shows/hides additional news items
-- **Comment System:** Full commenting with localStorage persistence
-- **Like System:** Like/unlike with count persistence
-- **Visitor Statistics:** Real-time visitor engagement stats
-
-### 7. Events (events.html) - NEW
-- Calendar widget
-- Tabbed interface: Upcoming, Past, Annual Programs
-- Event cards with date boxes
-- Newsletter subscription form
-- Detailed event information
-
-### 8. Resources (resources.html) - NEW
-- Resource category cards
-- Search functionality
-- Quick access links
-- Speeches download section
-- Official documents
-- Featured videos
-- Publications list
-
-### 9. Contact (contact.html)
-- Contact form with validation
-- Contact information cards
-- Social media links
-- Map placeholder
-- FAQ accordion section
-
----
-
-## Technical Specifications
-
-### Technologies Used:
-- **HTML5** - Semantic markup
-- **CSS3** - Custom properties, Flexbox, Grid, Animations
-- **JavaScript (ES6+)** - Modern JavaScript features
-- **Font Awesome 6** - Icons
-- **Google Fonts** - Poppins font family
-
-### CSS Variables (Custom Properties):
-```css
-:root {
-    --primary-color: #00A3E0;    /* Rwanda Flag Blue */
-    --secondary-color: #FAD201;   /* Rwanda Flag Yellow */
-    --accent-color: #20603D;      /* Rwanda Flag Green */
-    --text-color: #333;
-    --bg-color: #fff;
-    --card-bg: #f9f9f9;
-    --nav-bg: rgba(255, 255, 255, 0.95);
-    --transition: all 0.3s ease;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-```
-
-### Responsive Breakpoints:
-- Desktop: 1200px+
-- Tablet: 768px - 1199px
-- Mobile: < 768px
-
-### Browser APIs Used:
-- localStorage API
-- sessionStorage API
-- Intersection Observer API
-- DOM API
-- Event API
-
----
-
-## Usage Guide
-
-### For Website Visitors:
-
-1. **Browsing Content:**
-   - Use the navigation menu to explore different sections
-   - Click on news articles to read full content
-   - Use filters on News and Gallery pages
-
-2. **Interacting with News:**
-   - Click "Read More" to expand article content
-   - Click "View More News" to see additional articles
-   - Use category filters to find specific content
-   - Post comments (visible immediately)
-   - Like articles
-
-3. **Theme Preferences:**
-   - Click the moon/sun icon to toggle dark/light mode
-   - Preference is saved for future visits
-
-4. **Events & Resources:**
-   - Subscribe to newsletter on Events page
-   - Download documents from Resources page
-   - Search resources using the search box
-
-### For Developers:
-
-1. **Adding New News Articles:**
-   ```html
-   <div class="news-card" data-id="X" data-category="category">
-       <!-- Article content -->
-   </div>
-   ```
-
-2. **Accessing Visitor Stats:**
-   ```javascript
-   const stats = getVisitorStats();
-   console.log(stats.totalVisits);
-   console.log(stats.pagesVisited);
-   ```
-
-3. **Clearing Local Storage (Testing):**
-   ```javascript
-   clearVisitorData(); // Clears all visitor tracking
-   localStorage.clear(); // Clears all localStorage data
-   ```
-
----
-
-## Browser Compatibility
-
-### Supported Browsers:
-- Chrome 80+
-- Firefox 75+
-- Safari 13+
-- Edge 80+
-- Opera 67+
-
-### Features Requiring Modern Browsers:
-- CSS Grid and Flexbox
-- CSS Custom Properties
-- Intersection Observer API
-- ES6+ JavaScript features
-- localStorage/sessionStorage
-
-### Fallbacks:
-- Graceful degradation for older browsers
-- Basic functionality without JavaScript
-- Print styles for printing pages
-
----
-
-## Future Enhancements
-
-Potential improvements for future versions:
-1. Backend integration for persistent data storage
-2. Real-time comment notifications
-3. Multi-language support
-4. Advanced search functionality
-5. Social media sharing integration
-6. Analytics dashboard
-7. RSS feed for news updates
-8. Email notification system
-
----
-
-## Credits & Disclaimer
-
-**Educational Purpose:** This website is created for educational and portfolio demonstration purposes.
-
-**Content Sources:** Information compiled from publicly available sources about Rwanda's development and President Paul Kagame's public work.
-
-**Copyright:** &copy; 2026 Paul Kagame Portfolio. All Rights Reserved.
-
----
-
-*Documentation Version: 1.0*
-*Last Updated: April 2026*
+Paul Kagame Portfolio Website – Project Report
+1. Website Purpose
+The Paul Kagame Portfolio Website is an educational and interactive web project designed to showcase the life, leadership, achievements, and contributions of the President of Rwanda. The main goal of this website is to provide users with structured, engaging, and accessible information about national development, governance, and leadership.
+
+Beyond simple presentation, the website focuses on user interaction and modern web experience, allowing visitors to actively engage through comments, likes, and navigation across multiple content sections such as biography, news, events, and resources.
+
+Additionally, the project serves as a practical demonstration of front-end development skills, combining design, responsiveness, and JavaScript functionality to simulate a real-world web application.
+
+2. Tools and Technologies Used
+The website was developed using modern front-end technologies:
+
+HTML5
+Used to structure all web pages with semantic and accessible markup.
+
+CSS3
+Applied for styling, layout, and responsiveness using:
+
+Flexbox and Grid
+
+Animations and transitions
+
+CSS variables for theming (dark/light mode)
+
+JavaScript (ES6+)
+Used to implement dynamic features such as:
+
+Theme toggling
+
+Comment system
+
+Visitor tracking
+
+Interactive UI components
+
+Browser APIs
+
+localStorage – for saving user data (comments, likes, visits)
+
+sessionStorage – for session tracking
+
+Intersection Observer – for scroll animations
+
+External Libraries
+
+Font Awesome – icons
+
+Google Fonts (Poppins) – typography
+
+3. Key Features Implemented
+The website includes several interactive and user-friendly features:
+
+1. Dark/Light Theme Toggle
+Users can switch between dark and light modes. The selected theme is saved using localStorage, ensuring it remains consistent across visits.
+
+2. Responsive Design
+The website is fully responsive and works on desktop, tablet, and mobile devices. A hamburger menu is used for smaller screens.
+
+3. Interactive News System
+9 news articles with category filtering
+
+“Read More” and “View More” functionality
+
+Like and comment system with persistent data
+
+4. Local Storage Functionality
+The project uses localStorage to simulate backend behavior:
+
+Saving comments per article
+
+Tracking likes and preventing duplicates
+
+Storing contact form messages
+
+Managing newsletter subscriptions
+
+5. Visitor Tracking System
+Tracks:
+
+Total visits
+
+Unique visitors
+
+Pages visited
+
+User activity history
+
+6. Scroll-Based Features
+Scroll-to-top button
+
+Scroll reveal animations using Intersection Observer
+
+7. Additional Pages
+Two new pages were added:
+
+Events Page – displays upcoming and past events with newsletter subscription
+
+Resources Page – provides access to documents, speeches, and publications
+
+4. Challenges Faced and Solutions
+Challenge 1: Data Persistence Without Backend
+Since the project does not use a database, maintaining user data (comments, likes) was difficult.
+
+Solution:
+Used localStorage to store and retrieve data, allowing persistence across sessions without a server.
+
+Challenge 2: Managing Multiple Interactive Features
+Combining features like comments, likes, and visitor tracking created complexity in JavaScript logic.
+
+Solution:
+Organized code into reusable functions (e.g., addComment(), toggleLike()) and used clear naming conventions for storage keys.
+
+Challenge 3: Responsive Design Issues
+Ensuring the website looks good on all screen sizes required careful layout adjustments.
+
+Solution:
+Used CSS Flexbox and Grid along with media queries to create a flexible and adaptive layout.
+
+Challenge 4: Smooth User Experience
+Animations and transitions initially caused performance issues.
+
+Solution:
+Implemented the Intersection Observer API for efficient scroll animations instead of heavy event listeners.
+
+Challenge 5: Navigation Consistency
+Keeping navigation consistent across all pages was challenging during expansion.
+
+Solution:
+Standardized the navigation bar and updated all pages to maintain uniform structure and usability.
+
+Conclusion
+The Paul Kagame Portfolio Website successfully demonstrates the use of modern front-end technologies to build an interactive, responsive, and user-focused web application. It highlights both technical skills and the ability to solve real-world development challenges without relying on backend systems.
