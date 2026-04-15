@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Paul Kagame</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 50px 0;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 163, 224, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            color: #fff;
+            font-weight: 600;
+        }
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 10px;
+        }
+        .modal-caption {
+            color: #fff;
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+        .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Slider */
+        .slider-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 50px auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+        }
+        .slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.5);
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        .slider-btn:hover {
+            background: #fff;
+        }
+        .prev { left: 20px; }
+        .next { right: 20px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Paul Kagame</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="biography.html">Biography</a></li>
+                    <li><a href="leadership.html">Leadership</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-controls">
+                    <div id="theme-toggle"><i class="fas fa-moon"></i></div>
+                    <div class="hamburger"><i class="fas fa-bars"></i></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header" style="padding: 100px 0 50px; background: var(--card-bg); text-align: center;">
+        <div class="container">
+            <h1>Gallery</h1>
+            <p style="font-size: 1.2rem; color: var(--primary-color);">Moments of Leadership and Service</p>
+        </div>
+    </section>
+
+    <section class="gallery-slider reveal">
+        <div class="container">
+            <div class="slider-container">
+                <div class="slider" id="slider">
+                    <div class="slide"><img src="assets/images/yxyax3LWVTob.jpg" alt="Rwanda Development"></div>
+                    <div class="slide"><img src="assets/images/xXqrp3CkgdmW.jpg" alt="Model Village"></div>
+                    <div class="slide"><img src="assets/images/CvRLSjQWCl7j.jpg" alt="Public Address"></div>
+                </div>
+                <button class="slider-btn prev" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn next" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section reveal">
+        <div class="container">
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openModal('assets/images/ZU34AkmT9CVb.jpeg', 'Official Portrait')">
+                    <img src="assets/images/ZU34AkmT9CVb.jpeg" alt="Portrait">
+                    <div class="overlay">View Large</div>
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/images/yxyax3LWVTob.jpg', 'Rwanda\'s Rapid Development')">
+                    <img src="assets/images/yxyax3LWVTob.jpg" alt="Development">
+                    <div class="overlay">View Large</div>
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/images/xXqrp3CkgdmW.jpg', 'Inaugurating Karama Model Village')">
+                    <img src="assets/images/xXqrp3CkgdmW.jpg" alt="Village">
+                    <div class="overlay">View Large</div>
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/images/nBCxttxMy4Od.jpg', 'Eco-Friendly Housing Projects')">
+                    <img src="assets/images/nBCxttxMy4Od.jpg" alt="Housing">
+                    <div class="overlay">View Large</div>
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/images/CvRLSjQWCl7j.jpg', 'Addressing the Nation')">
+                    <img src="assets/images/CvRLSjQWCl7j.jpg" alt="Speech">
+                    <div class="overlay">View Large</div>
+                </div>
+                <div class="gallery-item" onclick="openModal('assets/images/pDkc6galMnId.jpg', 'Inspirational Leadership')">
+                    <img src="assets/images/pDkc6galMnId.jpg" alt="Leader">
+                    <div class="overlay">View Large</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="galleryModal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImg">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="biography.html">Biography</a>
+                <a href="leadership.html">Leadership</a>
+                <a href="achievements.html">Achievements</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="news.html">News</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p style="margin-bottom: 10px;">Educational Purpose - Professional Portfolio Project</p>
+            <div class="footer-bottom">
+                &copy; 2026 Paul Kagame Portfolio. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <div id="scroll-top"><i class="fas fa-arrow-up"></i></div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Slider
+        let currentSlide = 0;
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.slide');
+
+        function moveSlide(direction) {
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Auto slide
+        setInterval(() => moveSlide(1), 5000);
+
+        // Modal
+        const modal = document.getElementById('galleryModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalCaption = document.getElementById('modalCaption');
+
+        function openModal(src, caption) {
+            modal.style.display = 'flex';
+            modalImg.src = src;
+            modalCaption.innerText = caption;
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

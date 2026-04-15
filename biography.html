@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biography | Paul Kagame</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px 0;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background: inherit;
+            width: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background: var(--bg-color);
+            border: 4px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left { left: 0; }
+        .right { left: 50%; }
+        .right::after { left: -10px; }
+        .content {
+            padding: 20px 30px;
+            background: var(--card-bg);
+            position: relative;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        @media (max-width: 600px) {
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item::after { left: 21px; }
+            .right { left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Paul Kagame</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="biography.html" class="active">Biography</a></li>
+                    <li><a href="leadership.html">Leadership</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-controls">
+                    <div id="theme-toggle"><i class="fas fa-moon"></i></div>
+                    <div class="hamburger"><i class="fas fa-bars"></i></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header" style="padding: 100px 0 50px; background: var(--card-bg); text-align: center;">
+        <div class="container">
+            <h1>Biography of Paul Kagame</h1>
+            <p style="font-size: 1.2rem; color: var(--primary-color);">Early Life, Education, and Background</p>
+        </div>
+    </section>
+
+    <section class="bio-content reveal" style="padding: 80px 0;">
+        <div class="container">
+            <div class="bio-grid" style="display: grid; grid-template-columns: 1fr 2fr; gap: 50px;">
+                <div class="bio-sidebar">
+                    <img src="assets/images/ZU34AkmT9CVb.jpeg" alt="Paul Kagame" style="border-radius: 10px; margin-bottom: 20px;">
+                    <div class="quick-facts" style="background: var(--card-bg); padding: 20px; border-radius: 10px;">
+                        <h3>Quick Facts</h3>
+                        <ul style="margin-top: 15px;">
+                            <li><strong>Full Name:</strong> Paul Kagame</li>
+                            <li><strong>Born:</strong> Oct 23, 1957</li>
+                            <li><strong>Birthplace:</strong> Tambwe, Rwanda</li>
+                            <li><strong>Spouse:</strong> Jeannette Kagame</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="bio-text">
+                    <h2>Introduction</h2>
+                    <p style="margin-bottom: 20px;">Paul Kagame is the fourth and current President of Rwanda, serving since 2000. He is a former military officer and a key figure in the liberation of Rwanda and the end of the 1994 Genocide against the Tutsi.</p>
+                    
+                    <h2>Early Life</h2>
+                    <p style="margin-bottom: 20px;">Born in 1957 in the southern province of Rwanda, Kagame’s family fled to Uganda when he was just two years old to escape ethnic violence. He spent his childhood in refugee camps, an experience that shaped his resilience and commitment to justice.</p>
+                    
+                    <h2>Education</h2>
+                    <p style="margin-bottom: 20px;">Kagame attended primary school in the refugee camp and later moved to Ntare School in Mbarara, Uganda. He furthered his education in Kampala before receiving advanced military training at the US Army Command and General Staff College in Kansas, USA.</p>
+                    
+                    <h2>Career Beginnings</h2>
+                    <p style="margin-bottom: 20px;">Kagame’s military career began in the late 1970s when he joined Yoweri Museveni’s rebel army in Uganda. He rose through the ranks to become a senior officer. In 1990, he took command of the Rwandan Patriotic Front (RPF) following the death of its initial leader, Fred Rwigyema.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline-section reveal" style="background: var(--card-bg); padding: 80px 0;">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px;">Life & Career Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="content">
+                        <h3>1957</h3>
+                        <p>Born in Tambwe, Rwanda.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content">
+                        <h3>1959</h3>
+                        <p>Family flees to Uganda as refugees.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content">
+                        <h3>1990</h3>
+                        <p>Takes command of the RPF liberation struggle.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content">
+                        <h3>1994</h3>
+                        <p>RPF ends the Genocide against the Tutsi.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content">
+                        <h3>2000</h3>
+                        <p>Elected President of the Republic of Rwanda.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content">
+                        <h3>2024</h3>
+                        <p>Re-elected for another term with overwhelming support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values reveal" style="padding: 80px 0; text-align: center;">
+        <div class="container">
+            <h2 style="margin-bottom: 30px;">Personal Values</h2>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem;">"Leadership is not just about a title; it is about accountability, discipline, and a relentless focus on the well-being of the people. Our vision for Rwanda is built on the strength and unity of its citizens."</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="biography.html">Biography</a>
+                <a href="leadership.html">Leadership</a>
+                <a href="achievements.html">Achievements</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="news.html">News</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p style="margin-bottom: 10px;">Educational Purpose - Professional Portfolio Project</p>
+            <div class="footer-bottom">
+                &copy; 2026 Paul Kagame Portfolio. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <div id="scroll-top"><i class="fas fa-arrow-up"></i></div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Speeches | Paul Kagame</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 50px 0;
+        }
+        .news-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+        }
+        .news-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        .news-body {
+            padding: 25px;
+            flex-grow: 1;
+        }
+        .news-date {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .news-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        .like-btn {
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .like-btn.liked {
+            color: var(--primary-color);
+        }
+        .comment-section {
+            padding: 20px 25px;
+            background: rgba(0,0,0,0.02);
+            display: none;
+        }
+        .comment-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .comment-list {
+            margin-top: 15px;
+        }
+        .comment-item {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Paul Kagame</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="biography.html">Biography</a></li>
+                    <li><a href="leadership.html">Leadership</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="news.html" class="active">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-controls">
+                    <div id="theme-toggle"><i class="fas fa-moon"></i></div>
+                    <div class="hamburger"><i class="fas fa-bars"></i></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header" style="padding: 100px 0 50px; background: var(--card-bg); text-align: center;">
+        <div class="container">
+            <h1>News & Speeches</h1>
+            <p style="font-size: 1.2rem; color: var(--primary-color);">Latest Updates and Public Addresses</p>
+        </div>
+    </section>
+
+    <section class="news-section reveal">
+        <div class="container">
+            <div class="news-grid" id="news-container">
+                <!-- News Card 1 -->
+                <div class="news-card" data-id="1">
+                    <img src="assets/images/yxyax3LWVTob.jpg" class="news-img" alt="Speech">
+                    <div class="news-body">
+                        <div class="news-date">April 7, 2026</div>
+                        <h3>32nd Commemoration of the Genocide against the Tutsi</h3>
+                        <p>Fellow Rwandans,
+                            Distinguished guests,
+                            Friends of Rwanda,
+
+                            Today, we gather to mark the 32nd Commemoration of the Genocide against the Tutsi. This is a time to remember, to reflect, and to reaffirm our commitment to ensuring that what happened in 1994 never happens again—here or anywhere else in the world.
+
+                            We honor the memory of more than one million innocent lives that were lost during the Genocide against the Tutsi. These were men, women, and children whose lives were cut short because of hatred, division, and the failure of humanity.
+
+                            As a nation, we have chosen unity over division, resilience over despair, and hope over fear. Rwanda’s journey since 1994 has not been easy, but it has been guided by the courage of our people and the determination to rebuild our country on the foundation of dignity and shared identity.
+
+                            We must continue to confront the truth about our history. Remembering is not about dwelling in the past—it is about learning from it. It is about ensuring that future generations understand the consequences of hatred and the importance of protecting human life.
+
+                            To the survivors, we stand with you. Your strength and resilience inspire us every day. Your stories remind us why we must remain vigilant against any form of genocide ideology and divisionism.
+
+                            To the youth of Rwanda, you carry the responsibility of safeguarding our future. You must reject the seeds of hatred and embrace the values of unity, respect, and compassion.
+
+                            The international community also has a role to play. The failure to act in 1994 must never be repeated. Genocide is preventable, and the world must always choose to act in defense of humanity.
+
+                            As we commemorate today, let us renew our promise: Never Again.
+
+                            Let us continue building a Rwanda that is united, peaceful, and prosperous—a country where every citizen is valued and where our shared humanity defines us.
+
+                            I thank you.</p>
+                        <a href="#" class="btn" style="margin-top: 15px; padding: 8px 20px;">Read More</a>
+                    </div>
+                    <div class="news-actions">
+                        <div class="like-btn" onclick="toggleLike(1)">
+                            <i class="far fa-thumbs-up"></i> <span class="like-count">124</span> Likes
+                        </div>
+                        <div class="comment-toggle" onclick="toggleComments(1)" style="cursor: pointer;">
+                            <i class="far fa-comment"></i> Comments
+                        </div>
+                    </div>
+                    <div class="comment-section" id="comments-1">
+                        <input type="text" placeholder="Your Name" class="comment-input" id="name-1">
+                        <textarea placeholder="Your Comment" class="comment-input" id="text-1"></textarea>
+                        <button class="btn" onclick="addComment(1)" style="padding: 5px 15px; font-size: 0.8rem;">Post Comment</button>
+                        <div class="comment-list" id="list-1"></div>
+                    </div>
+                </div>
+
+                <!-- News Card 2 -->
+                <div class="news-card" data-id="2">
+                    <img src="assets/images/nBCxttxMy4Od.jpg" class="news-img" alt="Housing">
+                    <div class="news-body">
+                        <div class="news-date">March 15, 2026</div>
+                        <h3>Inauguration of New Eco-Friendly Housing Project</h3>
+                        <p>Fellow Rwandans,
+                            Distinguished guests,
+                            Partners and stakeholders,
+
+                            Today marks an important milestone in our journey toward sustainable development as we inaugurate this new eco-friendly housing project.
+
+                            This initiative reflects our shared vision of building a modern Rwanda that prioritizes environmental protection, efficient resource use, and improved quality of life for our citizens. It demonstrates that development and sustainability can go hand in hand.
+
+                            As we confront the realities of climate change, projects like this are not a luxury—they are a necessity. By investing in green housing, we are reducing our environmental footprint while creating communities that are healthier, more resilient, and more inclusive.
+
+                            This project is also a testament to the power of collaboration. Government institutions, private sector partners, and the community have come together to turn this vision into reality. Such partnerships are essential as we continue to transform our country.
+
+                            Beyond providing homes, this development creates opportunities—jobs for our people, innovation for our industries, and a model that can be replicated across the country and beyond.
+
+                            To the residents who will call this place home, this is more than just housing. It is a foundation for your future, a place where families will grow, and communities will thrive.
+
+                            To the youth, I encourage you to embrace innovation and sustainability. The future belongs to those who can develop solutions that protect our environment while advancing our economy.
+
+                            As we officially inaugurate this eco-friendly housing project, let us reaffirm our commitment to building a greener, more sustainable Rwanda for generations to come.
+
+                            I thank you.</p>
+                        <a href="#" class="btn" style="margin-top: 15px; padding: 8px 20px;">Read More</a>
+                    </div>
+                    <div class="news-actions">
+                        <div class="like-btn" onclick="toggleLike(2)">
+                            <i class="far fa-thumbs-up"></i> <span class="like-count">89</span> Likes
+                        </div>
+                        <div class="comment-toggle" onclick="toggleComments(2)" style="cursor: pointer;">
+                            <i class="far fa-comment"></i> Comments
+                        </div>
+                    </div>
+                    <div class="comment-section" id="comments-2">
+                        <input type="text" placeholder="Your Name" class="comment-input" id="name-2">
+                        <textarea placeholder="Your Comment" class="comment-input" id="text-2"></textarea>
+                        <button class="btn" onclick="addComment(2)" style="padding: 5px 15px; font-size: 0.8rem;">Post Comment</button>
+                        <div class="comment-list" id="list-2"></div>
+                    </div>
+                </div>
+
+                <!-- News Card 3 -->
+                <div class="news-card" data-id="3">
+                    <img src="assets/images/CvRLSjQWCl7j.jpg" class="news-img" alt="AU">
+                    <div class="news-body">
+                        <div class="news-date">February 20, 2026</div>
+                        <h3>Keynote Address at the African Union Summit</h3>
+                        <p>Your Excellencies,
+                            Heads of State and Government,
+                            Chairperson of the African Union Commission,
+                            Distinguished delegates,
+                            Ladies and gentlemen,
+
+                            It is an honor to address this esteemed gathering at the African Union Summit, where we come together to reflect on our shared progress and chart the path forward for our continent.
+
+                            Africa stands at a critical moment in its history. We are a continent rich in potential, driven by a young and dynamic population, and endowed with vast natural and human resources. Yet, we must continue working together to transform this potential into tangible prosperity for all our people.
+
+                            Regional integration remains central to our ambitions. Through initiatives such as the African Continental Free Trade Area, we have the opportunity to boost intra-African trade, strengthen our economies, and reduce dependency on external markets. It is now our responsibility to fully implement these frameworks and ensure that they deliver real benefits to our citizens.
+
+                            Peace and security are the foundation of development. Without stability, our progress cannot be sustained. We must reinforce our collective mechanisms to prevent conflict, respond effectively to crises, and support nations in rebuilding stronger institutions.
+
+                            Equally important is investment in our people. Education, healthcare, and technology must remain at the forefront of our priorities. Africa’s youth are not just the leaders of tomorrow—they are the drivers of change today. We must equip them with the skills and opportunities needed to innovate and compete on a global scale.
+
+                            Climate change continues to pose significant challenges to our continent. Africa contributes the least to global emissions, yet we bear a disproportionate burden of its impacts. We must advocate for climate justice while advancing sustainable solutions within our own countries.
+
+                            Distinguished leaders, the future of Africa will be determined by the choices we make today. Let us strengthen our unity, uphold accountability, and remain committed to the vision of an integrated, prosperous, and peaceful continent.
+
+                            Together, under the banner of the African Union, we can achieve the Africa we want.
+
+                            I thank you.</p>
+                        <a href="#" class="btn" style="margin-top: 15px; padding: 8px 20px;">Read More</a>
+                    </div>
+                    <div class="news-actions">
+                        <div class="like-btn" onclick="toggleLike(3)">
+                            <i class="far fa-thumbs-up"></i> <span class="like-count">210</span> Likes
+                        </div>
+                        <div class="comment-toggle" onclick="toggleComments(3)" style="cursor: pointer;">
+                            <i class="far fa-comment"></i> Comments
+                        </div>
+                    </div>
+                    <div class="comment-section" id="comments-3">
+                        <input type="text" placeholder="Your Name" class="comment-input" id="name-3">
+                        <textarea placeholder="Your Comment" class="comment-input" id="text-3"></textarea>
+                        <button class="btn" onclick="addComment(3)" style="padding: 5px 15px; font-size: 0.8rem;">Post Comment</button>
+                        <div class="comment-list" id="list-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="biography.html">Biography</a>
+                <a href="leadership.html">Leadership</a>
+                <a href="achievements.html">Achievements</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="news.html">News</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p style="margin-bottom: 10px;">Educational Purpose - Professional Portfolio Project</p>
+            <div class="footer-bottom">
+                &copy; 2026 Paul Kagame Portfolio. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <div id="scroll-top"><i class="fas fa-arrow-up"></i></div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Like & Comment System using LocalStorage
+        function toggleLike(id) {
+            const likeBtn = document.querySelector(`.news-card[data-id="${id}"] .like-btn`);
+            const likeCount = likeBtn.querySelector('.like-count');
+            let likes = parseInt(localStorage.getItem(`likes-${id}`)) || parseInt(likeCount.innerText);
+            
+            if (likeBtn.classList.contains('liked')) {
+                likes--;
+                likeBtn.classList.remove('liked');
+                likeBtn.querySelector('i').className = 'far fa-thumbs-up';
+            } else {
+                likes++;
+                likeBtn.classList.add('liked');
+                likeBtn.querySelector('i').className = 'fas fa-thumbs-up';
+            }
+            
+            localStorage.setItem(`likes-${id}`, likes);
+            likeCount.innerText = likes;
+        }
+
+        function toggleComments(id) {
+            const section = document.getElementById(`comments-${id}`);
+            section.style.display = section.style.display === 'block' ? 'none' : 'block';
+            if (section.style.display === 'block') {
+                loadComments(id);
+            }
+        }
+
+        function addComment(id) {
+            const name = document.getElementById(`name-${id}`).value;
+            const text = document.getElementById(`text-${id}`).value;
+            if (!name || !text) return;
+
+            const comments = JSON.parse(localStorage.getItem(`comments-${id}`)) || [];
+            comments.push({ name, text });
+            localStorage.setItem(`comments-${id}`, JSON.stringify(comments));
+
+            document.getElementById(`name-${id}`).value = '';
+            document.getElementById(`text-${id}`).value = '';
+            loadComments(id);
+        }
+
+        function loadComments(id) {
+            const list = document.getElementById(`list-${id}`);
+            const comments = JSON.parse(localStorage.getItem(`comments-${id}`)) || [];
+            list.innerHTML = comments.map(c => `
+                <div class="comment-item">
+                    <strong>${c.name}:</strong> ${c.text}
+                </div>
+            `).join('');
+        }
+
+        // Initialize likes from localStorage on load
+        window.onload = () => {
+            [1, 2, 3].forEach(id => {
+                const storedLikes = localStorage.getItem(`likes-${id}`);
+                if (storedLikes) {
+                    document.querySelector(`.news-card[data-id="${id}"] .like-count`).innerText = storedLikes;
+                }
+            });
+        };
+    </script>
+</body>
+</html>
